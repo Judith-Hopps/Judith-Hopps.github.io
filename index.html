@@ -168,8 +168,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2025-02-14 21:38:27" itemprop="dateCreated datePublished" datetime="2025-02-14T21:38:27+08:00">2025-02-14</time>
+              <time title="Created: 2025-02-14 21:38:27 / Modified: 21:42:59" itemprop="dateCreated datePublished" datetime="2025-02-14T21:38:27+08:00">2025-02-14</time>
             </span>
 
           
@@ -187,7 +188,7 @@
 
 <p>的回复</p>
 <p>发电机房的</p>
-<p>C语言<img src="file:///C:/Users/LXT/AppData/Roaming/marktext/images/2025-02-14-21-36-52-image.png" title="" alt="" data-align="center"></p>
+<p>C语言<img src=".\1_1.jpg" title="" alt="" data-align="center"></p>
 
       
     </div>
@@ -232,7 +233,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-02-14 19:21:59 / Modified: 21:33:18" itemprop="dateCreated datePublished" datetime="2025-02-14T19:21:59+08:00">2025-02-14</time>
+              <time title="Created: 2025-02-14 19:21:59 / Modified: 21:54:44" itemprop="dateCreated datePublished" datetime="2025-02-14T19:21:59+08:00">2025-02-14</time>
             </span>
 
           
@@ -258,25 +259,22 @@
 <p>———————————————</p>
 <h3 id="解析如下"><a href="#解析如下" class="headerlink" title="解析如下"></a>解析如下</h3><p><em>观察题目格式</em></p>
 <ul>
-<li>关于传入的参数int* nums<br>int* nums传入的是数组的地址，自定义函数内使用时nums[i]就可以了。</li>
+<li><p>关于传入的参数int* nums<br>int* nums传入的是数组的地址，自定义函数内使用时nums[i]就可以了。</p>
+</li>
+<li><p>关于传入的参数int* returnSize<br>*returnSize在main函数中是有变量传过来的，所以需要自定义函数中使用一下进行承接。<br>删除后自定义函数中缺少了变量来接受传过来的数据，就会报错<br>[微解：解释了但不确定对不对qwq]<br>所以不能删除下面这行代码</p>
+</li>
 </ul>
-<br>
-- 关于传入的参数int* returnSize
-*returnSize在main函数中是有变量传过来的，所以需要自定义函数中使用一下进行承接。
-删除后自定义函数中缺少了变量来接受传过来的数据，就会报错
-[微解：解释了但不确定对不对qwq]
-所以不能删除下面这行代码
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*returnSize=<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>关于两种返回情况<br>1.找到了：返回自定义函数中定义的数组的首地址<code>return result</code><br>2.没找到：返回NULL<code>return NULL</code>。</li>
+<li><p>关于两种返回情况<br>1.找到了：返回自定义函数中定义的数组的首地址<code>return result</code><br>2.没找到：返回NULL<code>return NULL</code>。</p>
+</li>
+<li><p>关于提示的信息<br>关于自定义函数中定义的返回数组可以采用malloc与free。<br>提示如下</p>
+<blockquote>
+<p>Note: The returned array must be malloced, assume caller calls free().</p>
+</blockquote>
+</li>
 </ul>
-<br>
-- 关于提示的信息
-关于自定义函数中定义的返回数组可以采用malloc与free。
-提示如下
->Note: The returned array must be malloced, assume caller calls free().
-
 <p><strong>在内存中开辟对用字节的空间，赋予给一个指针变量result。<br>[如果指针分配错误，函数将返回一个NULL，空指针]</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *result = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>)*<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 <p><strong>malloc使用后free</strong></p>
