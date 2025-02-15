@@ -20,17 +20,18 @@
     var CONFIG = {"hostname":"judith-hopps.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="主要是尝试记录一下自己刷的题，绷不住qwq。 1.两数之和       基础版[时杂o(n²)，空杂o(1)]采用的最简单的两个for循环的方式，主要注意一下几个点。 ——————————————— 解析如下观察题目格式  关于传入的参数int* numsint* nums传入的是数组的地址，自定义函数内使用时nums[i]就可以了。  关于传入的参数int* returnSize*returnS">
+  <meta name="description" content="主要是尝试记录一下自己刷的题QAQ，整理网上给出的资料内容，绷不住qwq。 1.两数之和       基础版[时杂o(n²)，空杂o(1)]采用的最简单的两个for循环的方式，主要注意一下几个点。 ——————————————— 解析如下观察题目格式  关于传入的参数int* numsint* nums传入的是数组的地址，自定义函数内使用时nums[i]就可以了。  关于传入的参数int* ret">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-1">
 <meta property="og:url" content="https://judith-hopps.github.io/2025/02/14/LeetCode-%E7%83%AD%E9%A2%98100/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="主要是尝试记录一下自己刷的题，绷不住qwq。 1.两数之和       基础版[时杂o(n²)，空杂o(1)]采用的最简单的两个for循环的方式，主要注意一下几个点。 ——————————————— 解析如下观察题目格式  关于传入的参数int* numsint* nums传入的是数组的地址，自定义函数内使用时nums[i]就可以了。  关于传入的参数int* returnSize*returnS">
+<meta property="og:description" content="主要是尝试记录一下自己刷的题QAQ，整理网上给出的资料内容，绷不住qwq。 1.两数之和       基础版[时杂o(n²)，空杂o(1)]采用的最简单的两个for循环的方式，主要注意一下几个点。 ——————————————— 解析如下观察题目格式  关于传入的参数int* numsint* nums传入的是数组的地址，自定义函数内使用时nums[i]就可以了。  关于传入的参数int* ret">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://judith-hopps.github.io/2025/02/14/LeetCode-%E7%83%AD%E9%A2%98100/1_1.jpg">
 <meta property="og:image" content="https://judith-hopps.github.io/2025/02/14/LeetCode-%E7%83%AD%E9%A2%98100/1_2.jpg">
+<meta property="og:image" content="c:\Users\LXT\AppData\Roaming\marktext\images\2025-02-15-17-01-10-image.png">
 <meta property="article:published_time" content="2025-02-14T11:21:59.000Z">
-<meta property="article:modified_time" content="2025-02-14T14:08:47.891Z">
+<meta property="article:modified_time" content="2025-02-15T09:53:27.056Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="c">
 <meta name="twitter:card" content="summary">
@@ -176,10 +177,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-02-14 19:21:59 / Modified: 22:08:47" itemprop="dateCreated datePublished" datetime="2025-02-14T19:21:59+08:00">2025-02-14</time>
+              <time title="Created: 2025-02-14 19:21:59" itemprop="dateCreated datePublished" datetime="2025-02-14T19:21:59+08:00">2025-02-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-15 17:53:27" itemprop="dateModified" datetime="2025-02-15T17:53:27+08:00">2025-02-15</time>
+              </span>
 
           
 
@@ -192,7 +199,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>主要是尝试记录一下自己刷的题，绷不住qwq。</p>
+        <p>主要是尝试记录一下自己刷的题QAQ，整理网上给出的资料内容，绷不住qwq。</p>
 <h1 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a><strong>1.两数之和</strong></h1><center class ='img'>
 <img title="题目描述" src=".\1_1.jpg">
 </center>
@@ -207,11 +214,8 @@
 <li><p>关于传入的参数int* nums<br>int* nums传入的是数组的地址，自定义函数内使用时nums[i]就可以了。</p>
 </li>
 <li><p>关于传入的参数int* returnSize<br>*returnSize在main函数中是有变量传过来的，所以需要自定义函数中使用一下进行承接。<br>删除后自定义函数中缺少了变量来接受传过来的数据，就会报错<br>[微解：解释了但不确定对不对qwq]<br>所以不能删除下面这行代码</p>
-</li>
-</ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*returnSize=<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
+</li>
 <li><p>关于两种返回情况<br>1.找到了：返回自定义函数中定义的数组的首地址<code>return result</code><br>2.没找到：返回NULL<code>return NULL</code>。</p>
 </li>
 <li><p>关于提示的信息<br>关于自定义函数中定义的返回数组可以采用malloc与free。<br>提示如下</p>
@@ -222,10 +226,9 @@
 </ul>
 <p><strong>在内存中开辟对用字节的空间，赋予给一个指针变量result。<br>[如果指针分配错误，函数将返回一个NULL，空指针]</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *result = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>)*<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
 <p><strong>malloc使用后free</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">free</span>(result); <span class="comment">//释放malloc创建的内存空间[即result指向的那片内存]</span></span><br><span class="line">result = <span class="literal">NULL</span>;<span class="comment">//将创建的指针变量指向指针，防止程序错误调用。</span></span><br></pre></td></tr></table></figure>
-
-<br>
 
 <p><em>观察题目内容</em></p>
 <ul>
@@ -233,16 +236,155 @@
 </ul>
 <p><strong>由于是在自定义函数中进行定义的，且需要将定义的这个变量返回主函数，所以采用static</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> result[<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>static的用法:<br>存储在静态数据区的变量会在程序刚开始运行时就完成初始化，也是唯一的一次初始化。共有两种变量存储在静态存储区：全局变量和 static 变量，只不过和全局变量比起来，static 可以控制变量的可见范围，说到底 static 还是用来隐藏的。</p>
 </blockquote>
 <ul>
-<li>算法部分<br>外层for中i从0到numSize,内层for中j从i+1到numSize。因为num[1]+num[2]&#x3D;6与num[2]+num[1]&#x3D;6是一样的结果，没有必要再计算一遍。所以i，j并没有单独遍历完整个数组。<br>[注：对于少量数据可能会执行得比下面这种方式快，但是对于大量的数据来说，这就很微不足道，时杂还是o(n²)没有变]</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;numSize;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;numSize;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num[i]+num[j];i!=j)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>算法部分<br>外层for中i从0到numSize,内层for中j从i+1到numSize。因为num[1]+num[2]&#x3D;6与num[2]+num[1]&#x3D;6是一样的结果，没有必要再计算一遍。所以i，j并没有单独遍历完整个数组。<br>[注：对于少量数据可能会执行得比下面这种方式快，但是对于大量的数据来说，这就很微不足道，时杂还是o(n²)没有变]</p>
+<blockquote>
+<p>当我们使用遍历整个数组的方式寻找 target - x 时，需要注意到每一个位于 x 之前的元素都已经和 x 匹配过，因此不需要再进行匹配。而每一个元素不能被使用两次，所以我们只需要在 x 后面的元素中寻找 target - x。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;numSize;i++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;numSize;j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(num[i]+num[j];i!=j)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>———————————————</p>
-<h3 id="关于这个算法的C代码如下："><a href="#关于这个算法的C代码如下：" class="headerlink" title="关于这个算法的C代码如下："></a>关于这个算法的C代码如下：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span>* <span class="title function_">twoSum</span><span class="params">(<span class="type">int</span>* nums, <span class="type">int</span> numsSize, <span class="type">int</span> target, <span class="type">int</span>* returnSize)</span></span><br><span class="line"> &#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> result[<span class="number">2</span>];<span class="comment">//自定义返回的数组</span></span><br><span class="line">    <span class="type">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;numsSize<span class="number">-1</span>;i++)  <span class="comment">//外层i为[0,numSize-1)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;numsSize;j++)  <span class="comment">//内层j为[i+1,numsSize)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]+nums[j]==target)  </span><br><span class="line">            &#123;</span><br><span class="line">                result[<span class="number">0</span>]=i;</span><br><span class="line">                result[<span class="number">1</span>]=j;     <span class="comment">//result存储找到的数据</span></span><br><span class="line">                *returnSize=<span class="number">2</span>;   <span class="comment">//不能删除，必须赋值</span></span><br><span class="line">                <span class="keyword">return</span> result;   <span class="comment">//返回数组地址</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">//当最后都没有匹配到对应的结果时，必须返回参数，这里选用NULL。</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<hr>
+<h3 id="关于这个算法的C代码如下："><a href="#关于这个算法的C代码如下：" class="headerlink" title="关于这个算法的C代码如下："></a>关于这个算法的C代码如下：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span>* <span class="title function_">twoSum</span><span class="params">(<span class="type">int</span>* nums, <span class="type">int</span> numsSize, <span class="type">int</span> target, <span class="type">int</span>* returnSize)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">static</span> <span class="type">int</span> result[<span class="number">2</span>];<span class="comment">//自定义返回的数组</span></span><br><span class="line">  <span class="type">int</span> i,j;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;numsSize<span class="number">-1</span>;i++)  <span class="comment">//外层i为[0,numSize-1)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;numsSize;j++)  <span class="comment">//内层j为[i+1,numsSize)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span>(nums[i]+nums[j]==target)  </span><br><span class="line">          &#123;</span><br><span class="line">              result[<span class="number">0</span>]=i;</span><br><span class="line">              result[<span class="number">1</span>]=j;     <span class="comment">//result存储找到的数据</span></span><br><span class="line">              *returnSize=<span class="number">2</span>;   <span class="comment">//不能删除，必须赋值</span></span><br><span class="line">              <span class="keyword">return</span> result;   <span class="comment">//返回数组地址</span></span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  *returnSize=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">//当最后都没有匹配到对应的结果时，必须返回参数，这里选用NULL。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="进阶版-时杂o-n-空杂o-n"><a href="#进阶版-时杂o-n-空杂o-n" class="headerlink" title="进阶版[时杂o(n)空杂o(n)]"></a>进阶版[时杂o(n)空杂o(n)]</h2><blockquote>
+<p>以时间换空间：在遍历的同时，记录一些信息，以省去一层循环</p>
+<p>记录什么信息：记录已经遍历过的数值和其对应的下标</p>
+<p>怎么记录信息：查找表实现-&gt;1.哈希表2.平衡二叉树  </p>
+<p>&#x2F;&#x2F;因为哈希表查找时采用的key%p模式，直接锁定，所以就将for_j的时杂o(n)转为了哈希表的查找时杂o(1)</p>
+</blockquote>
+<p>先构建大体框架[对比基础版没有改动的部分]</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* <span class="title function_">twoSum</span><span class="params">(<span class="type">int</span>* nums, <span class="type">int</span> numsSize, <span class="type">int</span> target, <span class="type">int</span>* returnSize)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span>* result = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="number">2</span> * <span class="keyword">sizeof</span>(<span class="type">int</span>)); <span class="comment">// 分配结果数组</span></span><br><span class="line">    *returnSize = <span class="number">2</span>; <span class="comment">// 设置返回数组的大小为 2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; numsSize; i++) </span><br><span class="line">    &#123;</span><br><span class="line">       <span class="comment">//主体内容 </span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果没有找到解，释放结果数组并返回 NULL</span></span><br><span class="line">    *returnSize = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">free</span>(result);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>———————————————</p>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p><em>思想</em>：</p>
+<blockquote>
+<p>对比暴力枚举法，枚举数组中的每个数x。根据具体的x依次遍历寻找数组中是否存在target-x[这部分查找o(n)]。</p>
+<p>而哈希表则是在枚举数组中的每个数x时，计算target-x，再查找哈希表对应中是否存在对应的value[这部分查找o(1)]。</p>
+</blockquote>
+<p>创建一个哈希表，对于每一个 <code>x</code>，我们首先查询哈希表中是否存在 <code>target - x</code>，然后将 <code>x</code> 插入到哈希表中，即可保证不会让 <code>x</code> 和自己匹配。</p>
+<p><em>代码</em>：</p>
+<p>定义哈希节点：</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">HashNode</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">key</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">value</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> HASH_SIZE 10000</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HashNode</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> key;   <span class="comment">// 存储数组元素的值</span></span><br><span class="line">    <span class="type">int</span> value; <span class="comment">// 存储数组元素的索引</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">HashNode</span>* <span class="title">next</span>;</span> <span class="comment">// 指向下一个节点，用于链地址法解决冲突</span></span><br><span class="line">&#125; HashNode;</span><br></pre></td></tr></table></figure>
+
+<p>以哈希节点构成哈希表数组：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HashNode* hashTable[HASH_SIZE];</span><br></pre></td></tr></table></figure>
+
+<p>初始化哈希表：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">initHashTable</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">memset</span>(hashTable, <span class="number">0</span>, <span class="keyword">sizeof</span>(hashTable));<span class="comment">//初始化函数，下面解释</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hashTable:</p>
+<table>
+<thead>
+<tr>
+<th align="center">hashTable</th>
+<th align="center">指下对应索引节点地址0fhbh</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center">hashNode[0fhbh]</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">key</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">…</td>
+</tr>
+<tr>
+<td align="center">value</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<p>构造计算哈希函数以及插入哈希表函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 哈希函数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">hash</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">abs</span>(key) % HASH_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入哈希表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">insert</span><span class="params">(<span class="type">int</span> key, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="type">int</span> index = hash(key);</span><br><span class="line">    HashNode* newNode = (HashNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HashNode));</span><br><span class="line">    newNode-&gt;key = key;</span><br><span class="line">    newNode-&gt;value = value;</span><br><span class="line">    newNode-&gt;next = hashTable[index];</span><br><span class="line">    hashTable[index] = newNode;<span class="comment">//头插法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>构造释放哈希表函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">clearHashTable</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; HASH_SIZE; i++) &#123;</span><br><span class="line">        HashNode* node = hashTable[i];</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            HashNode* temp = node;</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">            <span class="built_in">free</span>(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>以下以刚刚初始化完哈希表为例，对6数据的处理</em></p>
+<p>构造查找函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="type">int</span> index = hash(key);   <span class="comment">//index=6</span></span><br><span class="line">    HashNode* node = hashTable[index];  <span class="comment">//查询index=6下是否有哈希节点</span></span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;     <span class="comment">//如果找到</span></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;key == key) &#123;</span><br><span class="line">            <span class="keyword">return</span> node-&gt;value;   <span class="comment">//则返回6对应的value，也就是在num数组下的下标</span></span><br><span class="line">        &#125;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 未找到：显然6没有找到，返回</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>构造主函数</em>：</p>
+<p>先初始化哈希表<code>initHashTable(); </code></p>
+<p>依次枚举数组nums的值<code>for (int i = 0; i &lt; numsSize; i++)</code></p>
+<p>{</p>
+<p>1.计算差值[2&#x3D;8-6]<code>int complement = target - nums[i];</code></p>
+<p>2.在哈希表中查找差值[此时的hash表为空，所以index被返回为-1；如果找到了这个差值，那么就返回了数组下标]<code>int index = search(complement);</code></p>
+<p>3.如果找到了索引节点<code>if (index != -1)</code>就记录在result数组中</p>
+<p>如果没有找到，就将这个元素插入到哈希表中[即(6,0)被插入了哈希节点]</p>
+<p>}</p>
+<p>hashTable:</p>
+<table>
+<thead>
+<tr>
+<th>hashTable</th>
+<th>指下对应索引节点地址0fhbh</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>hashNode[0fhbh]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>…</td>
+</tr>
+<tr>
+<td>value</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>经过几轮后为以下结果：</p>
+<p><img src="C:\Users\LXT\AppData\Roaming\marktext\images\2025-02-15-17-01-10-image.png"></p>
+<p>———————————————</p>
+<h3 id="关于这个算法的C代码如下：-1"><a href="#关于这个算法的C代码如下：-1" class="headerlink" title="关于这个算法的C代码如下："></a>关于这个算法的C代码如下：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> HASH_SIZE 10000</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HashNode</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> key;   <span class="comment">// 存储数组元素的值</span></span><br><span class="line">    <span class="type">int</span> value; <span class="comment">// 存储数组元素的索引</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">HashNode</span>* <span class="title">next</span>;</span> <span class="comment">// 指向下一个节点，用于链地址法解决冲突</span></span><br><span class="line">&#125; HashNode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 哈希表数组</span></span><br><span class="line">HashNode* hashTable[HASH_SIZE];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 哈希函数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">hash</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">abs</span>(key) % HASH_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化哈希表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">initHashTable</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">memset</span>(hashTable, <span class="number">0</span>, <span class="keyword">sizeof</span>(hashTable));<span class="comment">//初始化函数，下面解释</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入哈希表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">insert</span><span class="params">(<span class="type">int</span> key, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="type">int</span> index = hash(key);</span><br><span class="line">    HashNode* newNode = (HashNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HashNode));</span><br><span class="line">    newNode-&gt;key = key;</span><br><span class="line">    newNode-&gt;value = value;</span><br><span class="line">    newNode-&gt;next = hashTable[index];</span><br><span class="line">    hashTable[index] = newNode;<span class="comment">//头插法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找哈希表</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="type">int</span> index = hash(key);</span><br><span class="line">    HashNode* node = hashTable[index];</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (node-&gt;key == key) &#123;</span><br><span class="line">            <span class="keyword">return</span> node-&gt;value; </span><br><span class="line">        &#125;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 未找到</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清理哈希表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">clearHashTable</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; HASH_SIZE; i++) &#123;</span><br><span class="line">        HashNode* node = hashTable[i];</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            HashNode* temp = node;</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">            <span class="built_in">free</span>(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span>* <span class="title function_">twoSum</span><span class="params">(<span class="type">int</span>* nums, <span class="type">int</span> numsSize, <span class="type">int</span> target, <span class="type">int</span>* returnSize)</span> &#123;</span><br><span class="line">    initHashTable(); <span class="comment">// 初始化哈希表</span></span><br><span class="line">    <span class="type">int</span>* result = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="number">2</span> * <span class="keyword">sizeof</span>(<span class="type">int</span>)); <span class="comment">// 分配结果数组</span></span><br><span class="line">    *returnSize = <span class="number">2</span>; <span class="comment">// 设置返回数组的大小为 2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        <span class="type">int</span> complement = target - nums[i]; <span class="comment">// 计算目标值与当前元素的差值</span></span><br><span class="line">        <span class="type">int</span> index = search(complement); <span class="comment">// 在哈希表中查找差值</span></span><br><span class="line">        <span class="keyword">if</span> (index != <span class="number">-1</span>) &#123;</span><br><span class="line">            result[<span class="number">0</span>] = index; <span class="comment">// 找到匹配的索引</span></span><br><span class="line">            result[<span class="number">1</span>] = i;     <span class="comment">// 当前元素的索引</span></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        insert(nums[i], i); <span class="comment">// 将当前元素插入哈希表</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果没有找到解，释放结果数组并返回 NULL</span></span><br><span class="line">    *returnSize = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">free</span>(result);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相关资料来源：</p>
+<p>哈希表相关内容<a target="_blank" rel="noopener" href="https://blog.csdn.net/a092cc/article/details/107049133">散列冲突处理：链地址法与开放地址法_开放地址法 链地址法 比较-CSDN博客</a></p>
+<p>本题题解来源[两数之和三种解法](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/15081290863">力扣刷题笔记（C语言解决）——两数之和 - 知乎</a>)[膜拜大佬o(_ _)o]</p>
 
     </div>
 
@@ -326,7 +468,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">1.</span> <span class="nav-text">1.两数之和</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%89%88-%E6%97%B6%E6%9D%82o-n%C2%B2-%EF%BC%8C%E7%A9%BA%E6%9D%82o-1"><span class="nav-number">1.1.</span> <span class="nav-text">基础版[时杂o(n²)，空杂o(1)]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%A6%82%E4%B8%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">解析如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E7%AE%97%E6%B3%95%E7%9A%84C%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">关于这个算法的C代码如下：</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">1.</span> <span class="nav-text">1.两数之和</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%89%88-%E6%97%B6%E6%9D%82o-n%C2%B2-%EF%BC%8C%E7%A9%BA%E6%9D%82o-1"><span class="nav-number">1.1.</span> <span class="nav-text">基础版[时杂o(n²)，空杂o(1)]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%A6%82%E4%B8%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">解析如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E7%AE%97%E6%B3%95%E7%9A%84C%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">关于这个算法的C代码如下：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E7%89%88-%E6%97%B6%E6%9D%82o-n-%E7%A9%BA%E6%9D%82o-n"><span class="nav-number">1.2.</span> <span class="nav-text">进阶版[时杂o(n)空杂o(n)]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E7%AE%97%E6%B3%95%E7%9A%84C%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">关于这个算法的C代码如下：</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
