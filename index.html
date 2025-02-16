@@ -146,6 +146,191 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://judith-hopps.github.io/2025/02/16/DL0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Judith Hopps">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick Wilde">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/16/DL0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">DL0_环境配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-02-16 17:04:32 / Modified: 17:05:00" itemprop="dateCreated datePublished" datetime="2025-02-16T17:04:32+08:00">2025-02-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://pic1.imgdb.cn/item/67b1a94ed0e0a243d4ffcd00.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://judith-hopps.github.io/2025/02/15/LeetCode-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Judith Hopps">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick Wilde">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/15/LeetCode-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D/" class="post-title-link" itemprop="url">LeetCode-字母异位</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-02-15 21:52:51" itemprop="dateCreated datePublished" datetime="2025-02-15T21:52:51+08:00">2025-02-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-16 12:48:23" itemprop="dateModified" datetime="2025-02-16T12:48:23+08:00">2025-02-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>专属于字母异位词的训练QAQ</p>
+<h1 id="1-有效的字母异位词"><a href="#1-有效的字母异位词" class="headerlink" title="1.有效的字母异位词"></a>1.有效的字母异位词</h1><img src="file:///D:/BLOG/source/_posts/2_1.jpg" title="" alt="题目242" data-align="left">
+
+<h2 id="字母异位词的含义"><a href="#字母异位词的含义" class="headerlink" title="字母异位词的含义"></a>字母异位词的含义</h2><blockquote>
+<p>输入：s&#x3D;”anagram”,t&#x3D;”nagaram”  </p>
+<p> [这两个单词s,t内含的字母都有相同的a,n,g,r,m四类元素，且每类元素的个数都是一样的3,1,1,1。它们只是元素的位置改变了]</p>
+<p>输出：true  </p>
+<p>[所以这t是s的有效的字母异位词]</p>
+</blockquote>
+<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>s&#x3D;”ab”则flags记录的信息如下表</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">a</th>
+<th align="center">b</th>
+<th align="center">c</th>
+<th align="center">d</th>
+<th align="center">e</th>
+<th align="center">f</th>
+<th align="center">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<p> t&#x3D;”abb”则flags记录的信息如下表</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">a</th>
+<th align="center">b</th>
+<th align="center">c</th>
+<th align="center">d</th>
+<th align="center">e</th>
+<th align="center">f</th>
+<th align="center">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<h2 id="有关代码如下-时杂o-n-空杂o-1"><a href="#有关代码如下-时杂o-n-空杂o-1" class="headerlink" title="有关代码如下[时杂o(n)空杂o(1)]"></a>有关代码如下[时杂o(n)空杂o(1)]</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">isAnagram</span><span class="params">(<span class="type">char</span>* s, <span class="type">char</span>* t)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> flags[<span class="number">26</span>]=&#123;<span class="number">0</span>&#125;;   <span class="comment">//用于记录s与t中所含字符信息的int型数组</span></span><br><span class="line">    <span class="type">int</span> flagt[<span class="number">26</span>]=&#123;<span class="number">0</span>&#125;;   <span class="comment">//注意初始化的是26字母长度的int型数组，以及=&#123;0&#125;可以全填充为0</span></span><br><span class="line">    <span class="type">int</span> lens=<span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="type">int</span> lent=<span class="built_in">strlen</span>(t);  <span class="comment">//计算s,t字符的长度可以直接用strlen函数</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;lens;i++)  <span class="comment">//记录s字符串的信息</span></span><br><span class="line">    &#123;</span><br><span class="line">        flags[s[i]-<span class="string">&#x27;a&#x27;</span>]++;   <span class="comment">//s[i]-&#x27;a&#x27;的值该字符在26字母表数组中的下标</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;lent;i++)  <span class="comment">//记录t字符串的信息</span></span><br><span class="line">    &#123;</span><br><span class="line">        flagt[t[i]-<span class="string">&#x27;a&#x27;</span>]++;  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)    <span class="comment">//注意比较时遍历的是整个字母表，而不是字符串的大小</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(flags[i]!=flagt[i])  <span class="comment">//进行比较信息</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>相关资料：<a target="_blank" rel="noopener" href="https://www.codeleading.com/article/1814745976/">字母异位词分组（Medium）C语言题解 </a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://judith-hopps.github.io/2025/02/14/LeetCode-%E7%83%AD%E9%A2%98100/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -177,7 +362,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-15 21:32:43" itemprop="dateModified" datetime="2025-02-15T21:32:43+08:00">2025-02-15</time>
+                <time title="Modified: 2025-02-15 21:56:27" itemprop="dateModified" datetime="2025-02-15T21:56:27+08:00">2025-02-15</time>
               </span>
 
           
@@ -370,7 +555,8 @@
 </tr>
 </tbody></table>
 <p>经过几轮后为以下结果：</p>
-<p><img src="/.%5C1_1.jpg" alt="最终结果"></p>
+<img src="file:///D:/BLOG/source/_posts/1_4.jpg" title="" alt="" data-align="center">
+
 <p>———————————————</p>
 <h3 id="关于这个算法的C代码如下：-1"><a href="#关于这个算法的C代码如下：-1" class="headerlink" title="关于这个算法的C代码如下："></a>关于这个算法的C代码如下：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> HASH_SIZE 10000</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HashNode</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> key;   <span class="comment">// 存储数组元素的值</span></span><br><span class="line">    <span class="type">int</span> value; <span class="comment">// 存储数组元素的索引</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">HashNode</span>* <span class="title">next</span>;</span> <span class="comment">// 指向下一个节点，用于链地址法解决冲突</span></span><br><span class="line">&#125; HashNode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 哈希表数组</span></span><br><span class="line">HashNode* hashTable[HASH_SIZE];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 哈希函数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">hash</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">abs</span>(key) % HASH_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化哈希表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">initHashTable</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">memset</span>(hashTable, <span class="number">0</span>, <span class="keyword">sizeof</span>(hashTable));<span class="comment">//初始化函数，下面解释</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入哈希表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">insert</span><span class="params">(<span class="type">int</span> key, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="type">int</span> index = hash(key);</span><br><span class="line">    HashNode* newNode = (HashNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HashNode));</span><br><span class="line">    newNode-&gt;key = key;</span><br><span class="line">    newNode-&gt;value = value;</span><br><span class="line">    newNode-&gt;next = hashTable[index];</span><br><span class="line">    hashTable[index] = newNode;<span class="comment">//头插法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找哈希表</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="type">int</span> index = hash(key);</span><br><span class="line">    HashNode* node = hashTable[index];</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (node-&gt;key == key) &#123;</span><br><span class="line">            <span class="keyword">return</span> node-&gt;value; </span><br><span class="line">        &#125;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 未找到</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清理哈希表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">clearHashTable</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; HASH_SIZE; i++) &#123;</span><br><span class="line">        HashNode* node = hashTable[i];</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            HashNode* temp = node;</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">            <span class="built_in">free</span>(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span>* <span class="title function_">twoSum</span><span class="params">(<span class="type">int</span>* nums, <span class="type">int</span> numsSize, <span class="type">int</span> target, <span class="type">int</span>* returnSize)</span> &#123;</span><br><span class="line">    initHashTable(); <span class="comment">// 初始化哈希表</span></span><br><span class="line">    <span class="type">int</span>* result = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="number">2</span> * <span class="keyword">sizeof</span>(<span class="type">int</span>)); <span class="comment">// 分配结果数组</span></span><br><span class="line">    *returnSize = <span class="number">2</span>; <span class="comment">// 设置返回数组的大小为 2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        <span class="type">int</span> complement = target - nums[i]; <span class="comment">// 计算目标值与当前元素的差值</span></span><br><span class="line">        <span class="type">int</span> index = search(complement); <span class="comment">// 在哈希表中查找差值</span></span><br><span class="line">        <span class="keyword">if</span> (index != <span class="number">-1</span>) &#123;</span><br><span class="line">            result[<span class="number">0</span>] = index; <span class="comment">// 找到匹配的索引</span></span><br><span class="line">            result[<span class="number">1</span>] = i;     <span class="comment">// 当前元素的索引</span></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        insert(nums[i], i); <span class="comment">// 将当前元素插入哈希表</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果没有找到解，释放结果数组并返回 NULL</span></span><br><span class="line">    *returnSize = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">free</span>(result);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -429,7 +615,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-15 18:06:39" itemprop="dateModified" datetime="2025-02-15T18:06:39+08:00">2025-02-15</time>
+                <time title="Modified: 2025-02-15 21:52:18" itemprop="dateModified" datetime="2025-02-15T21:52:18+08:00">2025-02-15</time>
               </span>
 
           
@@ -537,7 +723,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
