@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67b3083fd0e0a243d4003d7f.png">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67b30f78d0e0a243d4003f09.png">
 <meta property="article:published_time" content="2025-02-17T07:58:45.000Z">
-<meta property="article:modified_time" content="2025-02-17T10:39:56.748Z">
+<meta property="article:modified_time" content="2025-02-17T12:25:23.113Z">
 <meta property="article:author" content="Judith Hopps">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pic1.imgdb.cn/item/67b3083fd0e0a243d4003d7f.png">
@@ -178,7 +178,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-02-17 15:58:45 / Modified: 18:39:56" itemprop="dateCreated datePublished" datetime="2025-02-17T15:58:45+08:00">2025-02-17</time>
+              <time title="Created: 2025-02-17 15:58:45 / Modified: 20:25:23" itemprop="dateCreated datePublished" datetime="2025-02-17T15:58:45+08:00">2025-02-17</time>
             </span>
 
           
@@ -210,7 +210,6 @@
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello!</span><br><span class="line">welcome!</span><br></pre></td></tr></table></figure>
 
-<blockquote>
 <p><strong>1.预定义的插入符和提取符</strong></p>
 <p><code>cout &lt;&lt; 表达式 &lt;&lt; 表达式</code> 设备输出</p>
 <p><code>cin &lt;&lt; 表达式 &lt;&lt; 表达式</code> 标准输入将提取符作用在流对象cin上。[<code>cin &lt;&lt; a &lt;&lt; b</code>]</p>
@@ -235,13 +234,9 @@
 <p> 定义常量语句</p>
 <p>常量表达式是一类<em>值不能发生改变</em>的表达式，其值在程序编译阶段确立，便于程序优化</p>
 <p>ps:文字表达式与由常量表达式初始化的const对象都是常量表达式</p>
-<ul>
-<li><p><code>const float PI=3.14;</code>   or   <code>float const PI=3.14</code> </p>
-</li>
-<li><p>constexpr修饰的对象暗含了const属性，并且必须由常量表达式初始化<code>constexpr int size=get_size();</code></p>
+<p><code>const float PI=3.14;</code>   or   <code>float const PI=3.14</code> </p>
+<p>constexpr修饰的对象暗含了const属性，并且必须由常量表达式初始化<code>constexpr int size=get_size();</code></p>
 <p>&#x2F;&#x2F;要求getsize()为常量表达式，即函数返回常量表达式</p>
-</li>
-</ul>
 <p><code>const int size=get_size()</code>不是常量表达式</p>
 <p> <code>const int max_size=100;  const int limit=max_size+1</code>  两个都是常量表达式</p>
 <p><strong>5.2可处理的数据类型</strong></p>
@@ -310,7 +305,7 @@
 <p><code>x=a&gt;b?a:b;</code> a是否大于b，是则x&#x3D;a，否则x&#x3D;b</p>
 <p><strong>位运算</strong></p>
 <p>按位与&amp;  两个运算量的每一位进行按位与 [按位或|]  [按位异或^] </p>
-<p> [右移&gt;&gt; 低位舍，高位补符号位] [左移&lt;&lt; 低补0，高位舍]</p>
+<p>[右移&gt;&gt; 低位舍，高位补符号位] [左移&lt;&lt; 低补0，高位舍]</p>
 <p><strong>12.混合运算时数据类型的转换</strong></p>
 <p>隐式转换：</p>
 <img title="" src="https://pic1.imgdb.cn/item/67b30f78d0e0a243d4003f09.png" alt="" width="451" data-align="center">
@@ -319,7 +314,6 @@
 <p>(int z),(int)z,static_cast<int>(z)三种形式等价，<u>[注：本身z的值没有变，只是临时使用]</u></p>
 <p><strong>13.简单的I&#x2F;O格式控制</strong></p>
 <p><u>cout&lt;&lt;”hello”&lt;&lt;endl   [<code>endl</code>换行且刷新流 <code>ends</code>插入空字符 <code>ws</code>提取空白格]</u></p>
-</blockquote>
 
     </div>
 
