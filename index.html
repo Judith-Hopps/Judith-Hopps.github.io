@@ -146,6 +146,473 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://judith-hopps.github.io/2025/02/19/C-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Judith Hopps">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick Wilde">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/19/C-4/" class="post-title-link" itemprop="url">C-4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-02-19 21:36:25" itemprop="dateCreated datePublished" datetime="2025-02-19T21:36:25+08:00">2025-02-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://judith-hopps.github.io/2025/02/18/DNN-%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Judith Hopps">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick Wilde">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/18/DNN-%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83/" class="post-title-link" itemprop="url">DNN-对抗训练</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-02-18 17:13:27 / Modified: 22:39:58" itemprop="dateCreated datePublished" datetime="2025-02-18T17:13:27+08:00">2025-02-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="面向对象的对抗训练方法设计与实现"><a href="#面向对象的对抗训练方法设计与实现" class="headerlink" title="面向对象的对抗训练方法设计与实现"></a>面向对象的对抗训练方法设计与实现</h1><h2 id="chapter0-预备知识："><a href="#chapter0-预备知识：" class="headerlink" title="chapter0-预备知识："></a>chapter0-预备知识：</h2><h2 id="一、-经典数据集"><a href="#一、-经典数据集" class="headerlink" title="一、 经典数据集"></a>一、 经典数据集</h2><p>这些数据集广泛用于<strong>对抗攻击和防御</strong>研究。</p>
+<h3 id="1-1-小规模数据集（适用于快速实验）"><a href="#1-1-小规模数据集（适用于快速实验）" class="headerlink" title="1.1 小规模数据集（适用于快速实验）"></a>1.1 小规模数据集（适用于快速实验）</h3><ul>
+<li><strong>MNIST</strong>（手写数字）：28×28 灰度图像，10类。</li>
+<li><strong>CIFAR-10&#x2F;100</strong>（自然图像）：32×32 RGB，分别有10类&#x2F;100类。</li>
+<li><strong>SVHN</strong>（街道门牌号）：32×32 RGB，包含真实世界的数字识别场景。</li>
+</ul>
+<h3 id="1-2-中等规模数据集（增强泛化能力）"><a href="#1-2-中等规模数据集（增强泛化能力）" class="headerlink" title="1.2 中等规模数据集（增强泛化能力）"></a>1.2 中等规模数据集（增强泛化能力）</h3><ul>
+<li><strong>ImageNet-1K</strong>（ILSVRC）：1000类，包含120万张高分辨率RGB图像。</li>
+<li><strong>Tiny-ImageNet</strong>：200类，每类500张训练图，50张验证图，64×64 RGB。</li>
+<li><strong>GTSRB</strong>（德国交通标志识别）：43类，适用于自动驾驶对抗样本研究。</li>
+</ul>
+<h3 id="1-3-大规模数据集（增强模型鲁棒性）"><a href="#1-3-大规模数据集（增强模型鲁棒性）" class="headerlink" title="1.3 大规模数据集（增强模型鲁棒性）"></a>1.3 大规模数据集（增强模型鲁棒性）</h3><ul>
+<li><strong>ImageNet-A</strong>（对抗样本集）：包含难分类的自然图像，评估模型稳健性。</li>
+<li><strong>ImageNet-C</strong>（腐蚀和扰动）：人为加入噪声、模糊等，用于测试模型的稳健性。</li>
+<li><strong>ObjectNet</strong>：测试真实世界不变性（角度、背景变化）。</li>
+</ul>
+<hr>
+<h2 id="二、-经典防御方法和工具"><a href="#二、-经典防御方法和工具" class="headerlink" title="二、 经典防御方法和工具"></a>二、 经典防御方法和工具</h2><p>这些工具用于<strong>训练稳健模型、检测对抗样本、改进鲁棒性</strong>。</p>
+<h3 id="2-1-训练阶段的防御"><a href="#2-1-训练阶段的防御" class="headerlink" title="2.1 训练阶段的防御"></a>2.1 训练阶段的防御</h3><ul>
+<li><p><strong>Adversarial Training（对抗训练）</strong>：</p>
+<ul>
+<li><strong>PGD-AT</strong>（Projected Gradient Descent 对抗训练）：标准对抗训练方法，提高鲁棒性。</li>
+<li><strong>TRADES</strong>（鲁棒性和精度权衡）：引入<strong>对抗损失项</strong>，提高稳健性。</li>
+<li><strong>Mart</strong>（误分类感知鲁棒训练）：提高误分类样本的鲁棒性。</li>
+</ul>
+</li>
+<li><p><strong>Data Augmentation（数据增强）</strong></p>
+<ul>
+<li><strong>Mixup &#x2F; CutMix</strong>：混合多个样本增强模型泛化能力。</li>
+<li><strong>Gaussian Noise Augmentation</strong>：在训练数据上加入随机噪声，提高抗噪能力。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-测试阶段的检测与防御"><a href="#2-2-测试阶段的检测与防御" class="headerlink" title="2.2 测试阶段的检测与防御"></a>2.2 测试阶段的检测与防御</h3><ul>
+<li><p><strong>Feature Squeezing（特征压缩）</strong>：</p>
+<ul>
+<li>降低图像颜色深度、平滑滤波，检测是否为对抗样本。</li>
+<li>相关工具：<strong>ART（Adversarial Robustness Toolbox）</strong>。</li>
+</ul>
+</li>
+<li><p><strong>Input Transformation（输入变换）</strong>：</p>
+<ul>
+<li><strong>JPEG压缩</strong>：通过压缩降低对抗噪声影响。</li>
+<li><strong>Total Variation Minimization（TVM）</strong>：降噪，提高抗攻击能力。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-现有的防御工具"><a href="#2-3-现有的防御工具" class="headerlink" title="2.3 现有的防御工具"></a>2.3 现有的防御工具</h3><ul>
+<li><p><strong>Adversarial Robustness Toolbox（ART）</strong>（IBM）</p>
+<ul>
+<li>适用于TensorFlow、PyTorch、Keras的对抗攻击和防御工具包。</li>
+<li>提供FGSM、PGD、CW等攻击，支持对抗训练、特征压缩等防御方法。</li>
+</ul>
+</li>
+<li><p><strong>CleverHans</strong>（Google Brain）</p>
+<ul>
+<li>早期的对抗攻击工具库，提供多种攻击和评测方法。</li>
+</ul>
+</li>
+<li><p><strong>Foolbox</strong>（AIsecLab）</p>
+<ul>
+<li>兼容PyTorch&#x2F;TensorFlow，支持多种对抗攻击和防御评测。</li>
+</ul>
+</li>
+<li><p><strong>RobustBench</strong></p>
+<ul>
+<li>收录<strong>最强鲁棒性模型排行榜</strong>，用于评测防御效果。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="三、-对抗训练基本框架"><a href="#三、-对抗训练基本框架" class="headerlink" title="三、.对抗训练基本框架"></a><strong>三、.对抗训练基本框架</strong></h2><p>对抗训练是集攻击与防御于一体的启发式方法：</p>
+<ul>
+<li><p>其通过内层损失最大化来生成具有攻击性的对抗样本；[就抗样本生成]</p>
+</li>
+<li><p>其利用外层损失最小化来更新模型，进而增强模型的抗攻击能力。[模型防御</p>
+<p>训练]</p>
+</li>
+</ul>
+<h3 id="3-1-对抗样本生成"><a href="#3-1-对抗样本生成" class="headerlink" title="3.1 对抗样本生成"></a>3.1 对抗样本生成</h3><h4 id="1-对抗样本生成技术分类："><a href="#1-对抗样本生成技术分类：" class="headerlink" title="1 对抗样本生成技术分类："></a>1 对抗样本生成技术分类：</h4><ul>
+<li><p>基于<u><strong>图像空间攻击</strong></u>的对抗样本生成[主流生成方式]</p>
+</li>
+<li><p>基于特征空间攻击的对抗样本生成</p>
+</li>
+<li><p>基于物理空间攻击的对抗样本生成。</p>
+</li>
+</ul>
+<h4 id="2-详细内容"><a href="#2-详细内容" class="headerlink" title="2 详细内容"></a>2 详细内容</h4><h5 id="2-1-图像空间攻击"><a href="#2-1-图像空间攻击" class="headerlink" title="2.1 图像空间攻击"></a>2.1 <strong>图像空间攻击</strong></h5><p>首先基于损失函数最大化，获得满足幅值限制的扰动 δ，然后将 δ 添加到原始图像x生成对抗样本。</p>
+<p>典型方法有：</p>
+<h6 id="2-1-1-基于梯度的对抗样本生成方法："><a href="#2-1-1-基于梯度的对抗样本生成方法：" class="headerlink" title="2.1.1.基于梯度的对抗样本生成方法："></a>2.1.1.基于梯度的对抗样本生成方法：</h6><ul>
+<li><p><strong>FGSM[是其他梯度攻击图像方法的基础]</strong>:</p>
+<ul>
+<li><p>fast gradient sign method）（Goodfellow 等 ，2015）</p>
+</li>
+<li><p>是通过对原始数据<u>添加与损失函数的梯度方向一致而幅度较小的微小扰动</u>得到对抗样本</p>
+</li>
+<li><p>优点：<u>单步计算损失函数的梯度</u>完成对抗样本的生成，无需迭代，具有效率高的优势。</p>
+<p>缺点：这种单步生成对抗样本的方式导致 FGSM 缺乏对对抗样本多样性和合理性的探索，不利于提升模型的抗攻击能力。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>I-FGSM[基于FGSM提出的迭代版]</strong>:</p>
+<ul>
+<li><p>I-FGSM 沿着梯度增加的方向进行多步微小扰动,并在每次扰动后，重新</p>
+<p>计算梯度方向。</p>
+</li>
+<li><p>增加了控制扰动的强度。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>MI-FGSM[将动量整合到I-FGSM]</strong>:</p>
+<ul>
+<li><p><strong>为提高对抗样本的可迁移性。</strong></p>
+</li>
+<li><p>公式(8)(9)</p>
+</li>
+</ul>
+</li>
+<li><p><strong>PGD[不同于I-FGSM]</strong>：</p>
+<ul>
+<li><p>对原始样本添加其邻域范围内的随机扰动S作为初始对抗样本中</p>
+</li>
+<li><p>∏{⋅} 代表将每次更新迭代后的对抗样本投影到规定的阈值范围内。</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>上述方法均利用损失函数的梯度，将损失函数增加的方向定义为扰动更新的最优方向。有利于增加对抗样本的攻击性；不利于加快对抗训练的收敛速度，因为模型在该类方法所生成的对抗样本附近，需要通过多次迭代更新扰动方向，进而找到合适的对抗扰动。</p>
+</blockquote>
+<h6 id="2-1-2-正则项引入对抗样本"><a href="#2-1-2-正则项引入对抗样本" class="headerlink" title="2.1.2.正则项引入对抗样本"></a>2.1.2.正则项引入对抗样本</h6><p>为降低对抗样本的更新步数,Qin 等人（2019）将正则项引入目标函数，旨在通过提升局部线性，减少生成对抗样本所需的迭代步数。</p>
+<h6 id="2-1-3-插值对抗训练"><a href="#2-1-3-插值对抗训练" class="headerlink" title="2.1.3.插值对抗训练"></a>2.1.3.插值对抗训练</h6><p>Zhang 等，2021）引入插值的思想。具体来说，首先对输入图像与标签同时插值，然后最小化插值后的图像与原始图像的距离（此时，插值后的图像相当于对抗样本），同时，最大化插值后的标签与原始标签的距离。</p>
+<blockquote>
+<p>上述方法均依赖手工设计的规则一定程度上限制了对抗样本生成为避免这一问题，所以提出了网络直接生成对抗样本</p>
+</blockquote>
+<h6 id="2-1-4-网络直接生成对抗样本"><a href="#2-1-4-网络直接生成对抗样本" class="headerlink" title="2.1.4.网络直接生成对抗样本"></a>2.1.4.网络直接生成对抗样本</h6><ul>
+<li><p>基于 U-Net 架构的卷积编码器</p>
+</li>
+<li><p><strong>基于L2L（learning-to-learn）的递归神经网络（对抗训练框架</strong>：如图 2 所示，其框架可以与 AT（adversarial train⁃ing）或 TRADES（trade-off between robustness andaccuracy）相结合。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b46407d0e0a243d40083c8.png"></p>
+</li>
+<li><p>利用雅可比矩阵替代对抗样本的对抗正则化网络</p>
+</li>
+</ul>
+<h6 id="2-1-5-提高可迁移性的方法"><a href="#2-1-5-提高可迁移性的方法" class="headerlink" title="2.1.5.提高可迁移性的方法"></a>2.1.5.提高可迁移性的方法</h6><ul>
+<li><p>MI-FGSM[在梯度那部分已经提过了]：将动量项整合到迭代攻击中，以此稳定更新的梯度方向，进而提高对抗样本的可迁移性。</p>
+</li>
+<li><p>NI-FGSM：通 过 引 入 NAG（nesterov accelerated gradient）α × μ × gt 来 校 正 累 积 梯 度gt + 1，加速跳出局部最优解的同时，进而提高对抗样本的可迁移性。</p>
+</li>
+<li><p>利用方差的攻击可以在 MI-FGSM或 NI-FGSM的基础上更进一步提升对抗样本的可迁移性。公式(14)(15)</p>
+</li>
+</ul>
+<h6 id="2-1-6-考虑空间动量"><a href="#2-1-6-考虑空间动量" class="headerlink" title="2.1.6.考虑空间动量"></a>2.1.6.考虑空间动量</h6><p> SMI-FGSM：将动量累积机制从时间域引入到空间域，使用来自不同区域的信息来生成稳定的梯度，最后<u>在时间和空间域同时稳定梯度的更新方向</u>。</p>
+<p>….</p>
+<h5 id="2-2-特征空间攻击-即在网络层添加噪声"><a href="#2-2-特征空间攻击-即在网络层添加噪声" class="headerlink" title="2.2 特征空间攻击[即在网络层添加噪声]"></a>2.2 特征空间攻击[即在网络层添加噪声]</h5><p>输入图像进入某一DNN网络，可以在中间隐藏层的某几层或全部层添加噪声，将添加了噪声的特征图依次经过全连接层与分类层输出，得到最终的对抗样本。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b4669dd0e0a243d40084c9.png"></p>
+<hr>
+<h3 id="3-2-防御性训练"><a href="#3-2-防御性训练" class="headerlink" title="3.2 防御性训练"></a>3.2 防御性训练</h3><p>基本问题是利用已生成的对抗样本进行训练，并通过分类或检测损失最小化来更新模型。</p>
+<h4 id="1-引入损失正则项"><a href="#1-引入损失正则项" class="headerlink" title="1. 引入损失正则项"></a>1. 引入损失正则项</h4><ul>
+<li><p>目标：通过增加正则项来提升模型的鲁棒性。</p>
+</li>
+<li><p>方法：</p>
+<ul>
+<li><p><strong>Kannan 等人：在目标函数中增加正则项，鼓励原始样本和对抗样本的输出逻辑（logits）相似。</strong></p>
+</li>
+<li><p>Zhang 等人 ：将标准对抗训练的鲁棒误差分为自然误差和边界误差，设计新的优化目标，结合原始样本的目标函数和对抗样本的KL散度。</p>
+</li>
+<li><p>Sriramanan 等人：在标准对抗训练中引入松弛项，找到最优的梯度方向。</p>
+</li>
+<li><p><u>Wan 等人 ：考虑对抗样本与原始样本之间特征分布的差异性，通过训练学习数据的特征分布。</u></p>
+</li>
+<li><p>Xu 等人 ：提出公平性约束，缩小不同类别之间的鲁棒精确度差异。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-增强模型"><a href="#2-增强模型" class="headerlink" title="2. 增强模型"></a>2. 增强模型</h4><ul>
+<li><p>目标：通过修改网络结构或增加模块来增强模型的抗攻击能力。</p>
+</li>
+<li><p>方法：</p>
+<ul>
+<li><p>引入即插即用优化模块：</p>
+<ul>
+<li><p>Pang 等人 ：设计超球嵌入（HE）机制，包括特征归一化（FN）、权重归一化（WN）和角度余量（AM）。</p>
+</li>
+<li><p>Mustafa 等人 ：在网络不同深度添加辅助分类器，加强类间分离性。</p>
+</li>
+<li><p>Bai 等人 ：在网络中间层增加辅助分类器，自适应学习不同通道对类别预测的重要性。</p>
+</li>
+<li><p>Xu 等人 ：提出自适应网络，引入以输入为条件的归一化模块。</p>
+</li>
+</ul>
+</li>
+<li><p>修改模型内部结构：</p>
+<ul>
+<li><p>Xie 等人 ：改进网络BN层，提出Dual-BN，使原始样本与对抗样本分开利用不同的BN。</p>
+</li>
+<li><p>Singla 等人 ：研究不同激活函数与模型鲁棒性的关系。</p>
+</li>
+<li><p>Wu 等人 ：在模型权重上添加扰动。</p>
+</li>
+<li><p>Singh 等人 ：提出鲁棒的子网络方法，首先被调网络前几层生成的扰动，然后对网络剩余层数进行对抗训练。</p>
+</li>
+</ul>
+</li>
+<li><p>添加预测模型或使用双模型训练：</p>
+<ul>
+<li><p>Xiao 和 Zheng ：使用轻量级网络预测输入的干净样本，生成对抗样本后输入到目标网络进行训练与测试。</p>
+</li>
+<li><p>Cui 等人 ：提出双模型训练，同时训练自然模型与目标对抗模型。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-参数自适应"><a href="#3-参数自适应" class="headerlink" title="3. 参数自适应"></a>3. <strong>参数自适应</strong></h4><ul>
+<li><p>目标：通过自适应调整参数来提升模型鲁棒性。</p>
+</li>
+<li><p>方法：</p>
+<ul>
+<li><p><strong>Cheng 等人 ：提出自适应扰动约束ε，根据每个训练样本与决策边界的距离来分配相应的ε。</strong></p>
+</li>
+<li><p><u>Xiong 和 Hsieh ：采用回溯线搜索（BLS）方法自适应步长。</u></p>
+</li>
+<li><p><strong>Croce 和 Hein：提出自适应步长，设置初始步长η &#x3D; 2ε，根据条件判断是否需要使当前步长减半。</strong></p>
+</li>
+<li><p>Liu 等人：提出自适应扰动约束ε，采用预热的方法，定义余弦调度器和线性调度器。</p>
+</li>
+<li><p>Ye 等人：采用退火机制，训练开始时设置大步长和迭代次数K，逐渐增加K和减少α。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-早期停止"><a href="#4-早期停止" class="headerlink" title="4. 早期停止"></a>4. 早期停止</h4><ul>
+<li><p><strong>目标</strong>：防止模型在对抗训练中出现鲁棒过拟合现象。</p>
+</li>
+<li><p><strong>方法</strong>：</p>
+<ul>
+<li><p><u>Rice 等人 ：发现鲁棒过拟合现象普遍存在，提出早期停止策略。</u></p>
+</li>
+<li><p>Zhang 等人：在代码中将学习率设置为在75 epoch处衰减，并在76 epoch处停止训练。</p>
+</li>
+<li><p><strong>Zhang 等人：设置固定的攻击迭代次数τ &lt; K，模拟迭代了τ次生成对抗样本时停止训练。</strong></p>
+</li>
+<li><p>Sitawarin 等人 ：定义样本到决策边界的距离度量，一旦输入数据通过决策边界到达错误类别一侧，就停止生成对抗样本。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-半监督或无监督扩展训练"><a href="#5-半监督或无监督扩展训练" class="headerlink" title="5. 半监督或无监督扩展训练"></a>5. 半监督或无监督扩展训练</h4><ul>
+<li><p>目标：通过增加无标签数据来提升模型的对抗鲁棒性。</p>
+</li>
+<li><p>方法：</p>
+<ul>
+<li><p>Carmon 等人 ：使用半监督自训练的方式提升模型鲁棒性。</p>
+</li>
+<li><p>Zhai 等人：提出PASS算法，利用大量无标签数据提高模型的对抗鲁棒性。</p>
+</li>
+<li><p>Uesato 等人 ：使用无监督训练与监督训练加权结合的方法。</p>
+</li>
+<li><p>Zhang 和 Wang ：使用无监督训练方式，采用最优传输（OT）距离衡量原始样本与干净样本的距离。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-加速对抗训练"><a href="#6-加速对抗训练" class="headerlink" title="6. 加速对抗训练"></a>6. 加速对抗训练</h4><ul>
+<li><p>目标：提升标准对抗训练的速度。</p>
+</li>
+<li><p><strong>方法</strong>：</p>
+<ul>
+<li><p>Zhang 等人：提出YOPO方法，减少计算正反向传播次数。</p>
+</li>
+<li><p>Shafahi 等人：提出Free方法，同步更新扰动和模型参数。</p>
+</li>
+<li><p>Zheng 等人 ：提出ATTA方法，逐epoch累积对抗扰动。[对抗样本生成中提过]</p>
+</li>
+<li><p><strong>Wong 等人：提出Fast方法，在进行FGSM之前添加初始噪声。</strong></p>
+</li>
+<li><p><strong>Andriushchenko：提出GradAlign方法，最大化梯度对齐。</strong></p>
+</li>
+<li><p>Kim 等人 ：提出Stable-single AT方法，使用较小扰动生成更强的对抗样本。</p>
+</li>
+<li><p>Vivek 和 Babu (2020)：提出SADS方法，在模型的每个非线性层之后引入dropout层。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-其他防御方法"><a href="#7-其他防御方法" class="headerlink" title="7. 其他防御方法"></a>7. 其他防御方法</h4><ul>
+<li><p>目标：将标准对抗训练与其他领域相结合，提升模型鲁棒性。</p>
+</li>
+<li><p>方法：</p>
+<ul>
+<li><p><strong>Cai 等人 ：提出课程对抗训练（CAT），将课程学习的思想融合进对抗训练中。</strong></p>
+</li>
+<li><p>钱申诚等人：使用度量学习中的三元组损失函数，向模型添加额外的约束。</p>
+</li>
+<li><p><strong>Song 等人 ：将无监督和有监督的领域适应引入对抗训练中。</strong></p>
+</li>
+<li><p>Bashivan 等人 ：引入领域适应，在网络的逻辑输出层添加领域判别器。</p>
+</li>
+<li><p><strong>Jia 等人：将强化学习思想引入对抗训练，构建目标网络与策略网络结合的框架。</strong></p>
+</li>
+<li><p><u>Dong 等人 ：捕捉每个输入周围的对抗性扰动的分布。</u></p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-3-对抗训练评估"><a href="#3-3-对抗训练评估" class="headerlink" title="3.3 对抗训练评估"></a>3.3 对抗训练评估</h3><h4 id="1-常用的数据集"><a href="#1-常用的数据集" class="headerlink" title="1 常用的数据集"></a>1 常用的数据集</h4><p><img src="https://pic1.imgdb.cn/item/67b468ffd0e0a243d4008681.png"></p>
+<h4 id="2-常用攻击方法"><a href="#2-常用攻击方法" class="headerlink" title="2 常用攻击方法"></a>2 常用攻击方法</h4><h5 id="2-1-白盒攻击"><a href="#2-1-白盒攻击" class="headerlink" title="2.1 白盒攻击"></a>2.1 白盒攻击</h5><h6 id="2-1-1-定义"><a href="#2-1-1-定义" class="headerlink" title="2.1.1.定义"></a>2.1.1.定义</h6><p>攻击者可以获得目标模型的所有信息，包括模型结构、训练参数和防御方法等。</p>
+<h6 id="2-1-2-常见类型"><a href="#2-1-2-常见类型" class="headerlink" title="2.1.2.常见类型"></a>2.1.2.常见类型</h6><ul>
+<li><p><strong>基于梯度的攻击</strong>：</p>
+<ul>
+<li><p><strong>FGSM（Fast Gradient Sign Method）</strong>：通过计算模型损失对输入的梯度来生成扰动。</p>
+</li>
+<li><p><strong>PGD-K（Projected Gradient Descent with K iterations）</strong>：对PGD进行多次迭代，通常设K为20、50、100等。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>基于超平面分类的攻击</strong>：</p>
+<ul>
+<li><strong>DeepFool</strong>：通过最小扰动使模型输出错误的分类标签。</li>
+</ul>
+</li>
+<li><p><strong>基于优化的攻击</strong>：</p>
+<ul>
+<li><strong>C&amp;W（Carlini and Wagner）攻击</strong>：通过优化目标函数，生成对抗样本以突破模型防御。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-2-黑盒攻击"><a href="#2-2-黑盒攻击" class="headerlink" title="2.2 黑盒攻击"></a>2.2 黑盒攻击</h5><h6 id="2-2-1-定义"><a href="#2-2-1-定义" class="headerlink" title="2.2.1.定义"></a>2.2.1.定义</h6><p>攻击者对模型一无所知，只能通过输入和输出与模型进行交互。</p>
+<h6 id="2-2-2常见类型："><a href="#2-2-2常见类型：" class="headerlink" title="2.2.2常见类型："></a>2.2.2常见类型：</h6><ul>
+<li><p>基于近似梯度的攻击：</p>
+<ul>
+<li><p>ZOO（Zeroth Order Optimization）攻击：通过无梯度信息的优化方法来生成对抗样本。</p>
+</li>
+<li><p>SPSA（Simultaneous Perturbation Stochastic Approximation）攻击：使用同步扰动梯度近似来优化目标损失函数。</p>
+</li>
+</ul>
+</li>
+<li><p>基于替代模型的攻击：</p>
+<ul>
+<li>首先训练一个与目标模型决策边界相似的替代模型，再通过对替代模型进行白盒攻击生成对抗样本，利用对抗样本的<strong>迁移性</strong>攻击目标模型。</li>
+</ul>
+</li>
+<li><p>流模型攻击：</p>
+<ul>
+<li>通过引入流模型生成分布上与干净数据相似的对抗样本，具有较强的攻击性。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://judith-hopps.github.io/2025/02/17/C-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -172,6 +639,13 @@
 
               <time title="Created: 2025-02-17 23:00:10" itemprop="dateCreated datePublished" datetime="2025-02-17T23:00:10+08:00">2025-02-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-19 21:35:50" itemprop="dateModified" datetime="2025-02-19T21:35:50+08:00">2025-02-19</time>
+              </span>
 
           
 
@@ -184,7 +658,182 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>后自增i&#x3D;n++：”先使用再++”</p>
+<p>[具体还是有些稍微的不正确，还是先执行n++，只不过n是偷偷+1，抛出来使用的值还是没加之前的]</p>
+<img title="" src="https://pic1.imgdb.cn/item/67b3560bd0e0a243d400526e.png" alt="" width="535">
+
+<h2 id="3-1函数"><a href="#3-1函数" class="headerlink" title="3-1函数"></a>3-1函数</h2><h3 id="1-函数定义"><a href="#1-函数定义" class="headerlink" title="1.函数定义"></a>1.函数定义</h3><img title="" src="https://pic1.imgdb.cn/item/67b34fcfd0e0a243d400519e.png" alt="" width="442" data-align="inline">
+
+<h3 id="2-函数调用"><a href="#2-函数调用" class="headerlink" title="2.函数调用"></a>2.函数调用</h3><img title="" src="file:///C:/Users/LXT/AppData/Roaming/marktext/images/2025-02-17-23-20-15-image.png" alt="" width="455" data-align="inline">
+
+<h3 id="3-例题：进制转化"><a href="#3-例题：进制转化" class="headerlink" title="3.例题：进制转化"></a>3.例题：进制转化</h3><img src="file:///C:/Users/LXT/AppData/Roaming/marktext/images/2025-02-17-23-30-51-image.png" title="" alt="" width="532">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">power</span><span class="params">(<span class="type">double</span> x, <span class="type">int</span> n)</span></span>;<span class="comment">//计算x的n次方</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> value = <span class="number">0</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;enter an 8 bit binary number:&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        cin &gt;&gt; ch;   <span class="comment">//由于ch定义的字符类型，所以cin将值输入时，默认一次给出去一个字符给ch；原本cin中字符串移出一位</span></span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">&#x27;1&#x27;</span>)   <span class="comment">//注意这里是&#x27;1&#x27;，如果写为1，则会导致其ch与1进行对比</span></span><br><span class="line">            value += <span class="built_in">power</span>(<span class="number">2</span>, i);  <span class="comment">//加权</span></span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Decimal value is &quot;</span> &lt;&lt; value &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">power</span><span class="params">(<span class="type">double</span> x, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> val = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">        val *= x;</span><br><span class="line">    <span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><u>关于cout与cin的补充</u></p>
+<p>1.证明<code>cin &gt;&gt; ch;</code>上面代码中的猜想</p>
+<p><u>&#x2F;&#x2F;由于ch定义的字符类型，所以cin将值输入时，默认一次给出去一个字符给ch；原本cin中字符串移出一位。</u></p>
+<p>2.这个字符串最后一位是’\0’，在赋值入ch后ascii码为0，与ch&#x3D;&#x3D;’1‘的比较则失败，不进行加权计算。</p>
+<blockquote>
+<p>‘\0’：‘\0’是一个“空字符”常量，它表示一个字符串的结束，它的ASCII码值为0。注意它与空格’ ‘（ASCII码值为32）及’0’（ASCII码值为48）不一样的。</p>
+<p>NULL：在C中，NULL表示的是指向0的指针，而在C++中，NULL就直接跟0一样了。</p>
+<p>为了防止混淆，在C&#x2F;C++中，当要给一个字符串添加结束标志时，都应该用‘\0’而不是NULL或0。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> ch;  <span class="comment">//关于cin&gt;&gt;右侧的接收为字符类型</span></span><br><span class="line">    string str;  <span class="comment">//关于cin&gt;&gt;右侧的接收为字符串类型</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;enter contest:&quot;</span>;</span><br><span class="line">    cin &gt;&gt; ch;</span><br><span class="line">    cin &gt;&gt; str;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;ch值为：&quot;</span>;</span><br><span class="line">    cout &lt;&lt; ch;</span><br><span class="line">    cout &lt;&lt; endl &lt;&lt; <span class="string">&quot;str值为：&quot;</span>;</span><br><span class="line">    cout &lt;&lt; str;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">enter contest:qwer</span><br><span class="line">ch值为：q</span><br><span class="line">str值为：wer</span><br></pre></td></tr></table></figure>
+
+<p>3.<code>string r, s;cout &lt;&lt; &quot;请输入r,s：&quot;; cin &gt;&gt; r &gt;&gt; s;cout &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; s;</code></p>
+<p><u>用户界面-&gt;请输入r,s：234ds 2324e</u></p>
+<p><u>输出：234ds 2324e</u></p>
+<p><u>可以发现cin自动明白了用户输入的</u><code> </code><u>是分割两个数据的意思。</u></p>
+<h3 id="4-利用函数进行功能分解"><a href="#4-利用函数进行功能分解" class="headerlink" title="4.利用函数进行功能分解"></a>4.利用函数进行功能分解</h3><img title="" src="https://pic1.imgdb.cn/item/67b5531dd0e0a243d400a986.png" alt="" width="386">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">arctan</span><span class="params">(<span class="type">double</span> x)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> pi;</span><br><span class="line">    pi = <span class="number">16</span> * <span class="built_in">arctan</span>(<span class="number">1</span> / <span class="number">5.0</span>) - <span class="number">4</span> * <span class="built_in">arctan</span>(<span class="number">1</span> / <span class="number">239.0</span>);  <span class="comment">//注意是1/5.0</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;PI=&quot;</span> &lt;&lt; pi &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">arctan</span><span class="params">(<span class="type">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> sqr = x * x;</span><br><span class="line">    <span class="type">double</span> e = x;</span><br><span class="line">    <span class="type">double</span> r = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>;  <span class="comment">//作为分母x^3/3中的3</span></span><br><span class="line">    <span class="keyword">while</span> (e / i &gt; <span class="number">1e-15</span>)  <span class="comment">//直到级数单项据绝对值不大于10^-15为止[因为e-15代表的10^15所以这里是1e]。</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> f = e / i;    </span><br><span class="line">        r = (i % <span class="number">4</span> == <span class="number">1</span>) ? r + f : r - f;  <span class="comment">//因为是奇数偶数项前面的加减不同，所以用了%4[分母为1 3 5 7]表奇偶项</span></span><br><span class="line">        e = e * sqr;  <span class="comment">//表示的x的i次方达到和i+=2一样的次数</span></span><br><span class="line">        i += <span class="number">2</span>;  <span class="comment">//1 3 5 7...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.<u>关于<code>/</code>法的补充：</u></p>
+<p><u>因为整数相除结果取整，所以如果参数写1&#x2F;5,1&#x2F;239那么结果就是0，所以需要写上小数点。</u></p>
+<p><u>2.<mark>掌握</mark>arctan的计算程序</u></p>
+<img title="" src="https://pic1.imgdb.cn/item/67b55c48d0e0a243d400abfc.png" alt="" width="578">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//寻找并输出11~999之间的数m，它满足m、m^2、m^3均为回文数</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ishuiwen</span><span class="params">(<span class="type">unsigned</span> x)</span></span>; <span class="comment">//判断是或者不是，用bool类型比int 1,0更加规范。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">unsigned</span> i;  <span class="comment">//这里的数都是无符号数，所以用了unsigned</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;满足题意的有：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">11</span>; i &lt;= <span class="number">999</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">ishuiwen</span>(i) &amp;&amp; <span class="built_in">ishuiwen</span>(i * i) &amp;&amp; <span class="built_in">ishuiwen</span>(i * i))</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判断是否为回文：采用倒序对比原文的方法</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ishuiwen</span><span class="params">(<span class="type">unsigned</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">unsigned</span> y=<span class="number">0</span>;   <span class="comment">//用于存放反序之后的数</span></span><br><span class="line">    <span class="type">unsigned</span> i = x;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//将一个数变为自身的倒序数</span></span><br><span class="line">    <span class="keyword">while</span> (i &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        y = y * <span class="number">10</span> + i % <span class="number">10</span>;</span><br><span class="line">        i /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x == y; <span class="comment">//可以直接return x==y</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.<u>关于数字回文的补充：</u></p>
+<p><u>用除以10取余段的方法，从最低位开始，依次取出该数的各位数字。按反序重新构成新的数，比较与原数是否相等，若相等，则原数为回文。</u></p>
+<p>2.<code>return x == y; //可以直接return x==y</code>自动返回的就是bool类型</p>
+<p><u>3.<mark>掌握</mark>回文字符打印，以及回文数字判断，回文数字输出！！！</u></p>
+<img title="" src="https://pic1.imgdb.cn/item/67b56ef1d0e0a243d400b0c6.png" alt="" width="557">
+
+<p><u>计算pow(x,y) x^y与开平方根时，需要引入c中的数学函数，引入形式为[以C开头，去掉.h]</u></p>
+<p><code>#include &lt;cmath&gt;</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//因为这里计算的是sin(x)所以与计算pi时arctan不同点就在于这里是double类型，不是unsigned，因为可能为负数。所以精度需要看单项的绝对值</span></span><br><span class="line"><span class="type">const</span> <span class="type">double</span> TINY_VALUE = <span class="number">1e-10</span>;  <span class="comment">//计算精度为10^-10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">tsin</span><span class="params">(<span class="type">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">double</span> g = <span class="number">0</span>;</span><br><span class="line">	<span class="type">double</span> t = x;</span><br><span class="line">	<span class="type">int</span> n = <span class="number">1</span>;  <span class="comment">//</span></span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		g += t;</span><br><span class="line">		n++;</span><br><span class="line">		<span class="comment">//这里取巧的地方就在于，计算下一项时，是直接在上一项的内容上加减乘除所得</span></span><br><span class="line">		<span class="comment">//这里就避免了再写一个阶乘的函数，直接/ (2 * n - 1) / (2 * n - 2)就现下一项阶乘了。*x*x，-x同理</span></span><br><span class="line">		t = -t * x * x / (<span class="number">2</span> * n - <span class="number">1</span>) / (<span class="number">2</span> * n - <span class="number">2</span>);  </span><br><span class="line">	&#125; <span class="keyword">while</span> (<span class="built_in">fabs</span>(t) &gt;= TINY_VALUE);   </span><br><span class="line">	<span class="keyword">return</span> g;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">double</span> k=<span class="number">0</span>;</span><br><span class="line">	<span class="type">double</span> r, s;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;请输入r,s：&quot;</span>;</span><br><span class="line">	cin &gt;&gt; r &gt;&gt; s;</span><br><span class="line">	<span class="keyword">if</span> (r * r &lt;= s * s)</span><br><span class="line">		k = <span class="built_in">sqrt</span>(<span class="built_in">tsin</span>(r) * <span class="built_in">tsin</span>(r) + <span class="built_in">tsin</span>(s) * <span class="built_in">tsin</span>(s));<span class="comment">//sqrt平方根函数</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		k = <span class="built_in">tsin</span>(r * s)/<span class="number">2</span>; <span class="comment">//double/int-&gt;所得double</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;the result is &quot;</span> &lt;&lt; k &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">请输入r,s：1 2</span><br><span class="line">the result is 1.23891</span><br></pre></td></tr></table></figure>
+
+<img title="" src="https://pic1.imgdb.cn/item/67b5b6c3d0e0a243d400c97a.png" alt="" width="557">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">GameStatus</span> &#123; WIN, LOSE, PLAYING &#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">rollDice</span><span class="params">()</span></span>;  <span class="comment">//投骰子，计算和数，输出和数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> sum, myPoint;</span><br><span class="line">    GameStatus status;</span><br><span class="line">    <span class="type">unsigned</span> seed;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Please enter an unsigned integer:&quot;</span>;</span><br><span class="line">    cin &gt;&gt; seed;    <span class="comment">//输入随机数种子</span></span><br><span class="line">    <span class="built_in">srand</span>(seed);  <span class="comment">//将种子传递给rand()。为使rand()产生一序列伪随机整数而设置起始点。</span></span><br><span class="line"></span><br><span class="line">    sum = <span class="built_in">rollDice</span>();  <span class="comment">//第一轮掷骰子，计算和数</span></span><br><span class="line">    <span class="keyword">switch</span> (sum)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>:<span class="comment">//若和数为7或11则为胜，状态为WIN</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">        status = WIN;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:<span class="comment">//和数为2、3或12则为负，状态为LOSE</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">        status = LOSE;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:<span class="comment">//其他情况，尚无结果，状态为PLAYING，记下点数</span></span><br><span class="line">        status = PLAYING;</span><br><span class="line">        myPoint = sum;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;point is:&quot;</span> &lt;&lt; myPoint &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (status == PLAYING)  <span class="comment">//只要状态为PLAYING，继续</span></span><br><span class="line">    &#123;</span><br><span class="line">        sum = <span class="built_in">rollDice</span>();</span><br><span class="line">        <span class="keyword">if</span> (sum == myPoint)  <span class="comment">//某轮的和数等于点数则取胜</span></span><br><span class="line">            status = WIN;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (sum == <span class="number">7</span>)  <span class="comment">//出现和数为7则为负</span></span><br><span class="line">            status = LOSE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//当状态不为PLAYING时循环结束，输出游戏结果</span></span><br><span class="line">    <span class="keyword">if</span> (status == WIN)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;player wins&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;player loses&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">rollDice</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> die1 = <span class="number">1</span> + <span class="built_in">rand</span>() % <span class="number">6</span>;</span><br><span class="line">    <span class="type">int</span> die2 = <span class="number">1</span> + <span class="built_in">rand</span>() % <span class="number">6</span>; <span class="comment">//对应点数1，2，3...</span></span><br><span class="line">    <span class="type">int</span> sum = die1 + die2;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;player rolled:&quot;</span> &lt;&lt; die1 &lt;&lt; <span class="string">&quot;+&quot;</span> &lt;&lt; die2 &lt;&lt; <span class="string">&quot;=&quot;</span> &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Please enter an unsigned integer:32</span><br><span class="line">player rolled:6+1=7</span><br><span class="line">player wins</span><br></pre></td></tr></table></figure>
+
+<p>补充</p>
+<ul>
+<li><p><u>rand</u></p>
+<p>函数原型: <code>int rand(void);</code></p>
+<p>所需头文件：<code>&lt;cstdlib&gt;</code></p>
+<p>功能和返回值：求出并返回一个伪随机数</p>
+</li>
+<li><p><u>srand</u></p>
+<p>函数原型：<code>void srand(unsigned int seed);</code></p>
+<p>参数：<code>seed</code>产生随机数种子</p>
+<p>所需头文件：<code>&lt;cstdlib&gt;</code></p>
+<p>功能：为使rand()产生一序列伪随机整数而设置起始点。使用1作为seed参数，可以重新初始化rand()。</p>
+</li>
+</ul>
+<h3 id="5-递归调用过程"><a href="#5-递归调用过程" class="headerlink" title="5.递归调用过程"></a>5.递归调用过程</h3><p>函数直接或间接调用自身，称为递归调用。</p>
+<p><u>计算C(n,k)：</u></p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5c2e3d0e0a243d400cb65.png" alt="" width="546">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">comm</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;n)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(n==k||k==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">comm</span>(n<span class="number">-1</span>,k)+<span class="built_in">comm</span>(n<span class="number">-1</span>,k<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,k;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Please enter two integers n and k:&quot;</span>;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;C(n,k=)&quot;</span>&lt;&lt;<span class="built_in">comm</span>(n,k)&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><u><mark>汉洛塔</mark></u></p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5c47bd0e0a243d400cbaf.png" alt="" width="408">
+
+<p>用递归解决</p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5c5c1d0e0a243d400cc1b.png" alt="" width="516">
+
+<img title="" src="https://pic1.imgdb.cn/item/67b5c925d0e0a243d400ccd7.png" alt="" width="557">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//模拟移动一个盘子到别的针的过程。</span></span><br><span class="line"><span class="comment">//将src针的最上面一个盘子移动到dest针上</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">move</span><span class="params">(<span class="type">char</span> src,<span class="type">char</span> dest)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;src&lt;&lt;<span class="string">&quot;--&gt;&quot;</span>&lt;&lt;dest&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//模拟移动i-1个盘子到别的针的过程</span></span><br><span class="line"><span class="comment">//将n个盘子从src针移动到dest针，以medium针作为中转</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">hanoi</span><span class="params">(<span class="type">int</span> n,<span class="type">char</span> src,<span class="type">char</span> medium,<span class="type">char</span> dest)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">move</span>(src,dest);  <span class="comment">//最后一步，移动一个盘子</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">hanoi</span>(n<span class="number">-1</span>,src,dest,medium);  <span class="comment">//数据规模减小n-1</span></span><br><span class="line">        <span class="built_in">move</span>(src,dest);</span><br><span class="line">        <span class="built_in">hanoi</span>(n<span class="number">-1</span>,medium,src,dest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> m;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;enter the number of diskes:&quot;</span>;</span><br><span class="line">    cin&gt;&gt;m;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;the steps to moving &quot;</span>&lt;&lt;m&lt;&lt;<span class="string">&quot; diskes:&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">hanoi</span>(m,<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">enter the number of diskes:3</span><br><span class="line">the steps to moving3diskes:</span><br><span class="line">A--&gt;C</span><br><span class="line">A--&gt;B</span><br><span class="line">C--&gt;B</span><br><span class="line">A--&gt;C</span><br><span class="line">B--&gt;A</span><br><span class="line">B--&gt;C</span><br><span class="line">A--&gt;C</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-函数的参数传递"><a href="#6-函数的参数传递" class="headerlink" title="6.函数的参数传递"></a>6.函数的参数传递</h3><ul>
+<li><p>在函数被调用时才分配形参的存储单元</p>
+</li>
+<li><p>实参可以是常量，变量或<u>表达式</u></p>
+</li>
+<li><p><u>实参类型必须与形参相符或可隐式转换为形参类型</u></p>
+</li>
+<li><p><u>值传递是传递参数值，即单向传递</u></p>
+</li>
+<li><p><strong><u>引用传递可以实现双向传递</u></strong></p>
+</li>
+<li><p><strong><u>常引用作参数可以保障实参数据的安全</u></strong></p>
+</li>
+</ul>
+<p><strong>6.1值传递</strong></p>
+<p>即给形参分配空间，并用实参的值来初始化形参。单纯的<code>void swap(int&amp; a,int&amp; b)</code>是有问题的，无法成功交换x,y的值</p>
+<p><strong>6.2引用传递</strong></p>
+<p>引用方式如下</p>
+<p><mark>void swap(int&amp; a,int&amp; b)</mark>只有这里是变成int&amp; a，其余不变；这样才能成功的将x,y进行交换</p>
+<p>注意：</p>
+<ul>
+<li><p>一个引用，从它诞生起，<u>就必须确定是哪个<strong>变量的别名</strong>，且始终只能作为这个变量的别名，不能作为他用</u></p>
+<ul>
+<li><p>即定义的时候，立刻初始化int x&#x3D;2<mark>;int &amp;a&#x3D;x;</mark></p>
+</li>
+<li><p>一旦引用被初始化后，就不能改为指向其他对象。</p>
+</li>
+</ul>
+</li>
+<li><p><mark><strong>调用-&gt;关联-&gt;别名，x与a地址都是一样的，就是叫法不一样，用起来也是和X一样的用</strong>[这里和c的用法有些不同]</mark></p>
+</li>
+<li><p>引用作为形参的时候，由于形参的初始化不在类型说明时进行，而是在执行主函数中的调用表达式时，才为形参内存分配空间，同时用实参来初始化形参，所以多次调用时看似指向了其他对象，其实是释放后重新定义了新的引用变量。</p>
+</li>
+<li><p><strong><u>对形参的任何操作也会直接作用于实参。</u></strong></p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>&amp; a,<span class="type">int</span>&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t=a;</span><br><span class="line">    a=b;</span><br><span class="line">    b=t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x=<span class="number">5</span>,y=<span class="number">10</span>;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;x=&quot;</span>&lt;&lt;x&lt;&lt;<span class="string">&quot; y=&quot;</span>&lt;&lt;y&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">swap</span>(x,y);</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;x=&quot;</span>&lt;&lt;x&lt;&lt;<span class="string">&quot; y=&quot;</span>&lt;&lt;y&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><u><strong>6.3可变数量形参</strong></u></p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5d4ead0e0a243d400cea7.png" alt="" width="535">
+
+<p>传入参数都不固定时，用for auto遍历，依次取出一个元素，依次关联到lst中，这样就访问到容器中的各个内容。</p>
+<p><u><strong>6.4参数的默认值</strong></u></p>
+<ul>
+<li><p>预先设置默认的参数值，那么有实参值进来就用实参值，没有值进来就用设定的默认参数值。</p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5d597d0e0a243d400ceb8.png" alt="" width="387">
+</li>
+<li><p>默认形参必须列在形参列表右</p>
+</li>
+<li><p>调用时，实参与形参的结合次序从左往右</p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5d641d0e0a243d400cecd.png" alt="" width="403">
+</li>
+<li><p>默认参数值与函数的调用位置</p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5d6a4d0e0a243d400cee6.png" alt="" width="594"></li>
+</ul>
+<h3 id="7-内联函数"><a href="#7-内联函数" class="headerlink" title="7.内联函数"></a><del>7.内联函数</del></h3><p>对于一个简单的函数比如sum(a,b)，可能创建函数，分配内存比执行函数体内部还要快，所以出现了内联函数，节省开销。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b5d839d0e0a243d400cf46.png"></p>
+<p>使用如下【区别仅仅只是把double变为了inline double】</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">double</span> PI=<span class="number">3.14</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">double</span> <span class="title">calArea</span><span class="params">(<span class="type">double</span> radius)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> PI*radius*radius;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//主函数中</span></span><br><span class="line"><span class="type">double</span> area=<span class="built_in">calArea</span>(r);</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-函数重载"><a href="#8-函数重载" class="headerlink" title="8.函数重载"></a>8.函数重载</h3><p>由于面向过程的程序语言中，对于实现同一个功能，但是形参表不同的，需要多次定义不同的函数，与函数名。使用起来不方便，所以引入</p>
+<p><u>c++运行功能相近的函数在相同的作用域内以相同函数名声明，从而形成重载，方便使用，便于记忆。</u></p>
+<p><u>要求重载函数的参数表不同，或类型不同，或个数不同。</u></p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5da85d0e0a243d400cfb1.png" alt="" width="396">
+
+<p><mark><strong>注意事项：</strong></mark></p>
+<img title="" src="https://pic1.imgdb.cn/item/67b5dae1d0e0a243d400cfb7.png" alt="" width="621">
+
+<p>例题</p>
+<p>编写两个名为sumOfSquare的重载函数，分别求两整数的平方和及两实数的平方和。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">sumOfSquare</span><span class="params">(<span class="type">double</span> x,<span class="type">double</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x*x+y*y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sumOfSquare</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x*x+y*y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x=<span class="number">5</span>,y=<span class="number">10</span>;</span><br><span class="line">    <span class="type">double</span> a=<span class="number">5.5</span>,b=<span class="number">10.2</span>;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;x y:&quot;</span>&lt;&lt;<span class="built_in">sumOfSquare</span>(x,y)&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;a b:&quot;</span>&lt;&lt;<span class="built_in">sumOfSquare</span>(a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用C-系统函数"><a href="#使用C-系统函数" class="headerlink" title="使用C++系统函数"></a>使用C++系统函数</h3><ul>
+<li><p>可使用的函数：求平方根函数<code>sqrt</code>，求绝对值函数<code>abs</code></p>
+</li>
+<li><p>需包含头文件<code>&lt;cmath&gt;</code></p>
+</li>
+</ul>
+<p>例求angle的sin,cos,tan值</p>
+<p><code>#include &lt;cmath&gt;</code></p>
+<p><code>cin&gt;&gt;angle</code></p>
+<p><code>double radian=angle*PI/180</code>;<u>&#x2F;&#x2F;需要转为弧度值使用</u></p>
+<p><code>cout&lt;&lt;sin(radian</code></p>
+
       
     </div>
 
@@ -226,10 +875,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-02-17 15:58:45 / Modified: 22:59:54" itemprop="dateCreated datePublished" datetime="2025-02-17T15:58:45+08:00">2025-02-17</time>
+              <time title="Created: 2025-02-17 15:58:45" itemprop="dateCreated datePublished" datetime="2025-02-17T15:58:45+08:00">2025-02-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-19 12:20:36" itemprop="dateModified" datetime="2025-02-19T12:20:36+08:00">2025-02-19</time>
+              </span>
 
           
 
@@ -261,7 +916,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello!</span><br><span class="line">welcome!</span><br></pre></td></tr></table></figure>
 
 <h4 id="1-预定义的插入符和提取符cin-cout"><a href="#1-预定义的插入符和提取符cin-cout" class="headerlink" title="1.预定义的插入符和提取符cin&#x2F;cout"></a>1.预定义的插入符和提取符cin&#x2F;cout</h4><p><code>cout &lt;&lt; 表达式 &lt;&lt; 表达式</code> 设备输出</p>
-<p><u><code>cin &lt;&lt; 表达式 &lt;&lt; 表达式</code> 标准输入将提取符作用在流对象cin上。</p>
+<p><u><code>cin &lt;&lt; 表达式 &lt;&lt; 表达式</code> 标准输入将提取符作用在流对象cin上。</u></p>
 <p><u><code>cin &lt;&lt; a &lt;&lt; b</code>   输入2 3则a&#x3D;2,b&#x3D;3</u></p>
 <h4 id="2-C-字符集"><a href="#2-C-字符集" class="headerlink" title="2.C++字符集"></a>2.C++字符集</h4><p>即构成C++程序的字符集合，例如<code>! # % &amp; * _ ^</code></p>
 <h4 id="3-词法记号"><a href="#3-词法记号" class="headerlink" title="3.词法记号"></a>3.词法记号</h4><p>关键字：C++预定义的单词，不能作为自用</p>
@@ -286,7 +941,7 @@
 <p> <code>const int max_size=100;  const int limit=max_size+1</code>  两个都是常量表达式</p>
 <h5 id="5-2可处理的数据类型"><a href="#5-2可处理的数据类型" class="headerlink" title="5.2可处理的数据类型"></a>5.2可处理的数据类型</h5><p>1.基本整数：<code>int</code> 符号：<code>signed</code> <code>unsigned</code> 数据范围：<code>short</code> <code>long </code> <code>long long</code> 字符：<code>char</code>[ascii码，实际也是整数]</p>
 <p>2.基本文字常量：十进制，八进制<code>0+0~7</code>，十六进制<code>0x+0~9/a~f</code>，后缀L(long)，U(unsigned)，LL(long long)</p>
-<p>3.浮点数：<code>float</code>,<code>double</code>,<code>long double</code>（表示为12.5；或者0.345E+2(10的二次方)指数形式）</p>
+<p>3.浮点数：<code>float</code>,<code>double</code>,<code>long double</code>（表示为12.5；或者0.345E+2(e表10，e+2表10的二次方)指数形式）</p>
 <p><u>ps:<em>浮点常数默认为double类型，可以在后缀加上F使其变为float型，即2.1f</em></u></p>
 <p>4.字符类型，字符串类型，布尔类型</p>
 <p>5.字符文字常量：</p>
@@ -349,7 +1004,7 @@
 <h4 id="13-简单的I-O格式控制"><a href="#13-简单的I-O格式控制" class="headerlink" title="13.简单的I&#x2F;O格式控制"></a>13.简单的I&#x2F;O格式控制</h4><p><u>cout&lt;&lt;”hello”&lt;&lt;endl   [<code>endl</code>换行且刷新流 <code>ends</code>插入空字符 <code>ws</code>提取空白格]</u></p>
 <h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="2-2-分支与循环语句"><a href="#2-2-分支与循环语句" class="headerlink" title="2-2 分支与循环语句"></a>2-2 分支与循环语句</h2><p>输入一个年份，判断是否为闰年</p>
 <p><u>ps：四年一闰，百年不闰，四百年再闰。[year可以被4整除的，且不能被100整除的为闰年||year可以被400整除的为闰年。例如1900就不是闰年]</u></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> year;</span><br><span class="line">	<span class="type">bool</span> isLeepYear;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Enter the year&quot;</span>;</span><br><span class="line">	cin &gt;&gt; year;</span><br><span class="line">	isLeepYear = ((year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span>) || (year % <span class="number">400</span> == <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (isLeepYear)</span><br><span class="line">		cout &lt;&lt; year &lt;&lt; <span class="string">&quot;is a leap year&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		cout &lt;&lt; year &lt;&lt; <span class="string">&quot;is not a leap year&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> year;</span><br><span class="line">    <span class="type">bool</span> isLeepYear;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Enter the year&quot;</span>;</span><br><span class="line">    cin &gt;&gt; year;</span><br><span class="line">    isLeepYear = ((year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span>) || (year % <span class="number">400</span> == <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isLeepYear)</span><br><span class="line">        cout &lt;&lt; year &lt;&lt; <span class="string">&quot;is a leap year&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; year &lt;&lt; <span class="string">&quot;is not a leap year&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter the year400</span><br><span class="line">400is a leap year</span><br></pre></td></tr></table></figure>
@@ -362,7 +1017,7 @@
 <p>注意：语句1、2、3、4可以是符合语句，每层的if和else配对，或用{}来确定层级关系。  </p>
 <p>ps:缩格是便于人看，而{}是便于计算机看的，用以确定层级。所以如果没有{}进行区分层级，计算机是默认if找就近的else进行匹配</p>
 <p>所以以下的代码是会出错的</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> a=<span class="number">1</span>, b=<span class="number">2</span>,c=<span class="number">3</span>,d=<span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (a &lt; b)</span><br><span class="line">		<span class="keyword">if</span> (c &lt; d)</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;a &lt; b &amp;&amp; c &lt; d&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">else</span>(a &gt; b)  <span class="comment">//else(a&gt;b)成为与if(c&lt;d)一个层级的内容了，所以报错了。[看上去是与if(a&lt;b)但其实不然]</span></span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;a&gt;b&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a=<span class="number">1</span>, b=<span class="number">2</span>,c=<span class="number">3</span>,d=<span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a &lt; b)</span><br><span class="line">        <span class="keyword">if</span> (c &lt; d)</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;a &lt; b &amp;&amp; c &lt; d&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span>(a &gt; b)  <span class="comment">//else(a&gt;b)成为与if(c&lt;d)一个层级的内容了，所以报错了。[看上去是与if(a&lt;b)但其实不然]</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;a&gt;b&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-switch语句"><a href="#2-switch语句" class="headerlink" title="2.switch语句"></a>2.switch语句</h3><h4 id="2-1switch语句的语法形式"><a href="#2-1switch语句的语法形式" class="headerlink" title="2.1switch语句的语法形式"></a>2.1switch语句的语法形式</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> 常量表达式<span class="number">1</span>:语句<span class="number">1</span>   <span class="comment">//其中语句1可以用&#123;&#125;括起来</span></span><br><span class="line">    <span class="keyword">case</span> 常量表达式<span class="number">2</span>:语句<span class="number">2</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">case</span> 常量表达式n:语句n</span><br><span class="line">    <span class="keyword">default</span>:    语句n<span class="number">+1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -379,7 +1034,7 @@
 </li>
 </ul>
 <h4 id="2-2-输出星期"><a href="#2-2-输出星期" class="headerlink" title="2.2 输出星期"></a>2.2 输出星期</h4><p>输入一个0~6的数字，转换为星期输出</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> day;</span><br><span class="line">	cin &gt;&gt; day;</span><br><span class="line">	<span class="keyword">switch</span>(day)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">0</span>: cout &lt;&lt; <span class="string">&quot;Sunday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>: cout &lt;&lt; <span class="string">&quot;Monday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>: cout &lt;&lt; <span class="string">&quot;Tuesday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>: cout &lt;&lt; <span class="string">&quot;Wednesday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>: cout &lt;&lt; <span class="string">&quot;Thursday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>: cout &lt;&lt; <span class="string">&quot;Friday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>: cout &lt;&lt; <span class="string">&quot;Saturday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;Day out of range Sunday...Saturday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> day;</span><br><span class="line">    cin &gt;&gt; day;</span><br><span class="line">    <span class="keyword">switch</span>(day)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>: cout &lt;&lt; <span class="string">&quot;Sunday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>: cout &lt;&lt; <span class="string">&quot;Monday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>: cout &lt;&lt; <span class="string">&quot;Tuesday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>: cout &lt;&lt; <span class="string">&quot;Wednesday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>: cout &lt;&lt; <span class="string">&quot;Thursday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>: cout &lt;&lt; <span class="string">&quot;Friday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>: cout &lt;&lt; <span class="string">&quot;Saturday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Day out of range Sunday...Saturday&quot;</span> &lt;&lt; endl; <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>  <span class="comment">//用户输入</span></span><br><span class="line">Tuesday  <span class="comment">//cpp输出</span></span><br></pre></td></tr></table></figure>
@@ -388,23 +1043,23 @@
 <p>比如把上面的case 3语句里的break去掉，那么运行完case 3后，就会接着继续case 4后面的语句运行，case 4的判断已经阻止不了它了。所以此时的输出结果如下。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>  <span class="comment">//用户输入</span></span><br><span class="line">Wednesday  <span class="comment">//case 3的输出</span></span><br><span class="line">Thursday   <span class="comment">//case 4无法阻止其运行其内部的语句，进行了输出</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-while相关语句"><a href="#3-while相关语句" class="headerlink" title="3.while相关语句"></a>3.while相关语句</h3><h3 id="3-1while语句的语句形式"><a href="#3-1while语句的语句形式" class="headerlink" title="3.1while语句的语句形式"></a>3.1while语句的语句形式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(表达式)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-while相关语句"><a href="#3-while相关语句" class="headerlink" title="3.while相关语句"></a>3.while相关语句</h3><h4 id="3-1while语句的语句形式"><a href="#3-1while语句的语句形式" class="headerlink" title="3.1while语句的语句形式"></a>3.1while语句的语句形式</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(表达式)&#123;&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-2do-while语句的语句形式"><a href="#3-2do-while语句的语句形式" class="headerlink" title="3.2do-while语句的语句形式"></a>3.2do-while语句的语句形式</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>    </span><br><span class="line">    语句;</span><br><span class="line"><span class="keyword">while</span>(表达式);   <span class="comment">//注意这里有分号！！！！！</span></span><br></pre></td></tr></table></figure>
 
 <p><u>while(表达式)；后面有分号！！</u></p>
 <h4 id="3-3do-while例题"><a href="#3-3do-while例题" class="headerlink" title="3.3do-while例题"></a>3.3do-while例题</h4><p>输入一个整数，将其各位数字反转输出</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;enter the number:&quot;</span>;</span><br><span class="line">	cin &gt;&gt; n;   <span class="comment">//例如1234</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;result:&quot;</span>;</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; n%<span class="number">10</span> &lt;&lt; <span class="string">&quot; &quot;</span>;   <span class="comment">//n%10=4，将个位输出</span></span><br><span class="line">		n = n / <span class="number">10</span>;     <span class="comment">//再将n这个数右移舍去低位，此时n为123</span></span><br><span class="line">	&#125; <span class="keyword">while</span> (n != <span class="number">0</span>);   <span class="comment">//判断是否已将最后一位输出</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;enter the number:&quot;</span>;</span><br><span class="line">    cin &gt;&gt; n;   <span class="comment">//例如1234</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;result:&quot;</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; n%<span class="number">10</span> &lt;&lt; <span class="string">&quot; &quot;</span>;   <span class="comment">//n%10=4，将个位输出</span></span><br><span class="line">        n = n / <span class="number">10</span>;     <span class="comment">//再将n这个数右移舍去低位，此时n为123</span></span><br><span class="line">    &#125; <span class="keyword">while</span> (n != <span class="number">0</span>);   <span class="comment">//判断是否已将最后一位输出</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enter the number:123</span><br><span class="line">result:3 2 1</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-for语句"><a href="#4-for语句" class="headerlink" title="4.for语句"></a>4.for语句</h3><p>基础的语法和c语言都是一样的，有要注意的点：</p>
 <p>1。下面这个程序会运行出错，因为k只能再for这个大的体中可以访问到，超出了for，在主函数里则查无此人。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt; <span class="number">43</span>; k++)</span><br><span class="line">		sum += k;</span><br><span class="line">	k = <span class="number">32</span>;  <span class="comment">//这个地方会报错，因为检测不到k的信息；</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt; <span class="number">43</span>; k++)</span><br><span class="line">        sum += k;</span><br><span class="line">    k = <span class="number">32</span>;  <span class="comment">//这个地方会报错，因为检测不到k的信息；</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>2.循环次数未知，或者运算中突然变值，一般使用while循环，比如输入一串数据，统计正数和负数数据的大小，输入数据的个数未知。</p>
-<h3 id="5-其他流程控制语句"><a href="#5-其他流程控制语句" class="headerlink" title="5.其他流程控制语句"></a>5.其他流程控制语句</h3><p><img src="https://pic1.imgdb.cn/item/67b34eb8d0e0a243d400514e.png"></p>
+<h3 id="5-其他流程控制语句"><a href="#5-其他流程控制语句" class="headerlink" title="5.其他流程控制语句"></a>5.其他流程控制语句</h3><p><img src="https://pic1.imgdb.cn/item/67b35328d0e0a243d4005224.png"></p>
 
       
     </div>
@@ -1063,7 +1718,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
