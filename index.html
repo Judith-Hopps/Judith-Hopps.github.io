@@ -146,6 +146,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://judith-hopps.github.io/2025/02/21/c-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Judith Hopps">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick Wilde">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/21/c-6/" class="post-title-link" itemprop="url">c-6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-02-21 14:47:19" itemprop="dateCreated datePublished" datetime="2025-02-21T14:47:19+08:00">2025-02-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://judith-hopps.github.io/2025/02/20/C-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -169,10 +226,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-02-20 21:43:34 / Modified: 21:44:26" itemprop="dateCreated datePublished" datetime="2025-02-20T21:43:34+08:00">2025-02-20</time>
+              <time title="Created: 2025-02-20 21:43:34" itemprop="dateCreated datePublished" datetime="2025-02-20T21:43:34+08:00">2025-02-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-21 13:30:38" itemprop="dateModified" datetime="2025-02-21T13:30:38+08:00">2025-02-21</time>
+              </span>
 
           
 
@@ -185,7 +248,236 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h1 id="Chapter5-数据的共享与保护"><a href="#Chapter5-数据的共享与保护" class="headerlink" title="Chapter5 数据的共享与保护"></a>Chapter5 数据的共享与保护</h1><p>函数间的数据共享</p>
+<p>不同位置定义的变量和对象，其作用域，可见性，生存期都不同</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p><strong>作用域是一个标识符在程序正文中有效的区域</strong></p>
+<h3 id="作用域分类"><a href="#作用域分类" class="headerlink" title="作用域分类"></a>作用域分类</h3><h4 id="函数原型作用域"><a href="#函数原型作用域" class="headerlink" title="函数原型作用域"></a>函数原型作用域</h4><ul>
+<li><p>编译器在检查函数原型的时候，只看参数表中参数的类型，并不看参数名</p>
+</li>
+<li><p>在函数调用的时候，才会给形参分配空间。在声明函数原型的时候，这些形参并不对应到任何存储空间，其只是个符号</p>
+</li>
+</ul>
+<img title="" src="https://pic1.imgdb.cn/item/67b738b3d0e0a243d40111fe.png" alt="" data-align="left" width="377">
+
+<h4 id="局部作用域"><a href="#局部作用域" class="headerlink" title="局部作用域"></a>局部作用域</h4><img title="" src="https://pic1.imgdb.cn/item/67b7393bd0e0a243d401121a.png" alt="" width="376" data-align="left">
+
+<h4 id="类作用域-类成员"><a href="#类作用域-类成员" class="headerlink" title="类作用域[类成员]"></a>类作用域[类成员]</h4><ul>
+<li><p><strong>其范围包括类体和非内联成员函数的函数体</strong></p>
+<ul>
+<li><p><strong><u>非内联成员函数的函数原型<code>void get(int x);</code>是在类体class..{public:…}里面声明的</u></strong></p>
+</li>
+<li><p><strong><u>而函数体的实现是在类外的。在类外实现的函数体，依然具有类作用域。比如，在类外实现函数体时，需要在前面添上类名限定符<code>clock::</code>，即<code>void clock::set(int x)&#123;...&#125;</code>,限定其为类作用域</u></strong></p>
+</li>
+</ul>
+</li>
+<li></li>
+<li><p><strong>如果在类作用域以外访问类的成员，要通过类名（访问静态成员），或者该类的对象名、对象引用、对象指针（访问非静态成员）</strong></p>
+</li>
+</ul>
+<h4 id="命名空间作用域"><a href="#命名空间作用域" class="headerlink" title="命名空间作用域"></a>命名空间作用域</h4><ul>
+<li><p>命名空间可以解决类名，函数名等的命名冲突</p>
+</li>
+<li><p>类名空间的声明</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> 命名空间名</span><br><span class="line">&#123;</span><br><span class="line">    各种声明(函数声明、类声明、...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例如</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> SomeNs</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">SomeClass</span> &#123;...&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>引用类名：SomeNs::SomeClass obj1;</p>
+</li>
+<li><p>using语句有两种形式：</p>
+<ul>
+<li><p>using 命名空间名::标识符名; [这个就是仅免去其中<u>标识符名</u>的命名空间名]</p>
+</li>
+<li><p>using namespace 命名空间名;[&lt;-将C++标准库里面用的命名空间名字放在这里]</p>
+</li>
+<li><p>using namespace std;[这就将标准库里的所有标识符全都免去了命名空间名，直接可以访问，即打开了命名空间。这里是全面打开可能会导致重名的问题]</p>
+</li>
+</ul>
+</li>
+<li><p>特殊的空间名</p>
+<ul>
+<li><p>全局命名空间：默认的命名空间</p>
+</li>
+<li><p>匿名命名空间：对每个源文件时唯一的</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="限定作用域的枚举类型"><a href="#限定作用域的枚举类型" class="headerlink" title="限定作用域的枚举类型"></a>限定作用域的枚举类型</h4><img title="" src="https://pic1.imgdb.cn/item/67b73f57d0e0a243d401134a.png" alt="" width="399" data-align="left">
+
+<hr>
+<p>如果遇到嵌套的作用域，内存与外层又出现了重名的情况，那么内层的变量就会屏蔽外层的变量。就有可能在这个作用域范围内，但是其作用域不可用的情况，所以提出了——</p>
+<h2 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h2><img title="" src="https://pic1.imgdb.cn/item/67b7406ed0e0a243d4011368.png" alt="" width="460" data-align="left">
+
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><img src="https://pic1.imgdb.cn/item/67b740a6d0e0a243d4011371.png"></p>
+<p>调试</p>
+<p><img src="https://pic1.imgdb.cn/item/67b741a7d0e0a243d40113a8.png"></p>
+<hr>
+<p>有时候变量离开其作用域暂时是不可用的，但是其并没有消亡，回到其作用域时，其又是可用的。比如，从主函数中调用子函数时，当进入到子函数中以后，那么主函数的变量在子函数中都是不可用的，但是其还活着，还在其生存期内。等结束了子函数，退回到主函数中以后，主函数中定义的以前的变量都可以用。</p>
+<p><strong>即使在子函数中也可以定义一个跟主函数程序运行期间一样的静态变量，让其离开作用域之后，其依然活着，其生存期是长的。下次回到子函数中还能看到其遗留的值</strong>。有点像是回一趟家，把书留在家里了，在家的时候把书折了一页。等下一次回家的时候，书的那一页还是被折着——</p>
+<h2 id="生存期"><a href="#生存期" class="headerlink" title="生存期"></a>生存期</h2><h3 id="对象myclock的生存期"><a href="#对象myclock的生存期" class="headerlink" title="对象myclock的生存期"></a>对象myclock的生存期</h3><p>对象从产生到结束的这段时间就是它的生存期。在对象生存期内，对象将保持它的值，直到被更新为止。</p>
+<h3 id="静态生存期"><a href="#静态生存期" class="headerlink" title="**静态生存期"></a>**静态生存期</h3><ul>
+<li><p><strong>这种生存期与程序的生存期相同</strong></p>
+</li>
+<li><p><strong>文件作用域中声明的对象具有这种生存期</strong></p>
+</li>
+<li><p><strong><u>*在函数内部声明静态生存期对象，要冠以关键字static</u></strong>[这个就像是，手动留下了一个灯，你走的时候是把灯打开了，下次来的时候灯还是开着的]</p>
+</li>
+<li><p><strong>仅静态变量<code>ststic int a;</code>没有赋值时，默认赋值为0</strong></p>
+</li>
+</ul>
+<h3 id="动态生存期-比如函数void-sum-声明处与int-a-0"><a href="#动态生存期-比如函数void-sum-声明处与int-a-0" class="headerlink" title="**动态生存期[比如函数void sum()声明处与int a&#x3D;0]"></a>**动态生存期[比如函数void sum()声明处与int a&#x3D;0]</h3><ul>
+<li><p>块作用域中声明的，没有用static修饰的对象是动态生存期的对象（习惯成为局部生存期对象）。</p>
+</li>
+<li><p><strong>开始于程序执行到声明点<code>void sum(int a,int b)</code>时，结束于该标识符的作用域结束处</strong></p>
+</li>
+<li><p>[比如在第五章前函数中的那些变量都是属于动态生存期]</p>
+</li>
+</ul>
+<h3 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> i=<span class="number">1</span>;  <span class="comment">//i为全局变量，具有静态生存期</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">other</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> a=<span class="number">2</span>;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> b;</span><br><span class="line">    <span class="comment">//a,b为静态局部变量，具有全局寿命，局部可见&#123;这里的a,b,c与主函数中的a,b,c没有任何关系&#125;</span></span><br><span class="line">    <span class="comment">//只第一次进入函数时被初始化</span></span><br><span class="line">    <span class="type">int</span> c=<span class="number">10</span>;  <span class="comment">//c为局部变量，具有动态生存期</span></span><br><span class="line">               <span class="comment">//每次进入函数时都初始化</span></span><br><span class="line">    a+=<span class="number">2</span>;</span><br><span class="line">    i+=<span class="number">32</span>;</span><br><span class="line">    c+=<span class="number">5</span>;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;---OTHER---\n&quot;</span>;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot; i: &quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot; a: &quot;</span>&lt;&lt;a&lt;&lt;<span class="string">&quot; b: &quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot; c: &quot;</span>&lt;&lt;c&lt;&lt;endl;</span><br><span class="line">    b=a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> a;  <span class="comment">//静态局部变量，有全局寿命，局部可见。</span></span><br><span class="line">    <span class="type">int</span> b=<span class="number">-10</span>;  <span class="comment">//b,c为局部变量，具有动态生存期</span></span><br><span class="line">    <span class="type">int</span> c=<span class="number">0</span>;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;---MAIN---\n&quot;</span>;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot; i: &quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot; a: &quot;</span>&lt;&lt;a&lt;&lt;<span class="string">&quot; b: &quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot; c: &quot;</span>&lt;&lt;c&lt;&lt;endl;</span><br><span class="line">    i+=<span class="number">10</span>;</span><br><span class="line">    <span class="built_in">other</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;---MAIN-puls---\n&quot;</span>;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot; i: &quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot; a: &quot;</span>&lt;&lt;a&lt;&lt;<span class="string">&quot; b: &quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot; c: &quot;</span>&lt;&lt;c&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">other</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//MAIN:       i=1,          a=0,       b=-10,    c=0;</span></span><br><span class="line"><span class="comment">//OTHER:      i=1+10+32=43, a=2+2=4,   b=0,      c=15;</span></span><br><span class="line"><span class="comment">//MAIN-puls:  i=43,         a=0,       b=-10,    c=0;</span></span><br><span class="line"><span class="comment">//OTHER-puls: i=1+42+32=74, a=4+2=6,   b=4,    c=15;</span></span><br></pre></td></tr></table></figure>
+
+<p>值得一提：</p>
+<p><code>void other() &#123;  static int a=2;  static int b;  //a,b为静态局部变量，具有全局寿命，局部可见&#123;这里的a,b,c与主函数中的a,b,c没有任何关系&#125; //且这里的初始化a=2,b=0只在第一次创建这个变量的时候有用，后面只和上一次离开的时候遗留下的值有关系</code></p>
+<p>慎用：如果与以前调用过多少次，曾经被调用该有关那么就可以使用。如果需要累积记下来时就可以试试。一般尽量少用</p>
+<hr>
+<h2 id="对象间的共享"><a href="#对象间的共享" class="headerlink" title="对象间的共享"></a>对象间的共享</h2><ul>
+<li><p>同类对象<strong>数据共享</strong>：<strong>静态数据成员</strong></p>
+</li>
+<li><p>同类对象<strong>功能共享</strong>：<strong>静态函数成员</strong></p>
+</li>
+<li><p><strong>类与外部数据共享</strong>：<strong>友元</strong>[给其他类一个函数，用于访问本类的私有成员，相当于一个授权。类似于给朋友自己家的钥匙，用于其来自己家里拿他需要的东西]</p>
+</li>
+</ul>
+<h3 id="静态数据成员"><a href="#静态数据成员" class="headerlink" title="静态数据成员"></a>静态数据成员</h3><ul>
+<li><p><strong>用关键字static声明</strong></p>
+</li>
+<li><p><strong>为该类的所有对象共享</strong>，静态数据成员具有静态生存期[这种生存期与程序的生存期相同]</p>
+</li>
+<li><p><strong>一般在类外初始化，用(::)来指明所属的类</strong></p>
+</li>
+<li><p>c++11支持<strong>静态常量(const或constexpr修饰)类内初始化</strong>，此时<strong>类外</strong>仍可定义该静态成员，但<strong>不可再次初始化操作</strong></p>
+</li>
+</ul>
+<h4 id="例题-2"><a href="#例题-2" class="headerlink" title="** 例题"></a>**<mark> <strong>例题</mark></strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">point</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">point</span>(<span class="type">int</span> x=<span class="number">0</span>,<span class="type">int</span> y=<span class="number">0</span>):<span class="built_in">x</span>(x),<span class="built_in">y</span>(y) <span class="comment">//构造函数</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//在构造函数中对count增值</span></span><br><span class="line">        <span class="comment">//对所有对象共同维护同一个cout</span></span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//复制构造函数：因为这里不仅仅是简单的赋值，还要count++所以自定义复制构造函数</span></span><br><span class="line">    <span class="built_in">point</span>(point &amp;p)</span><br><span class="line">    &#123;</span><br><span class="line">        x=p.x;</span><br><span class="line">        y=p.y;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//析构函数：在析构函数中对count减值。点对象生存期结束时，调用析构函数完毕后，释放空间</span></span><br><span class="line">    ~<span class="built_in">point</span>() &#123;count--;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getX</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> x;&#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> y;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">showCout</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;<span class="comment">//输出静态数据成员</span></span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;object cout=&quot;</span>&lt;&lt;count&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:   <span class="comment">//私有数据成员</span></span><br><span class="line">    <span class="type">int</span> x,y;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count;  <span class="comment">//静态数据成员声明，用于记录点的个数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态数据成员定义和初始化</span></span><br><span class="line"><span class="comment">//在类外定义的时候，不能用全局变量来定义，因为其属于point这个类，所以使用类名限定</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> point::count=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="function">point <span class="title">a</span><span class="params">(<span class="number">4</span>,<span class="number">5</span>)</span></span>;  <span class="comment">//定义对象a，其构造函数会使count增1</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;point A:&quot;</span>&lt;&lt;a.<span class="built_in">getX</span>()&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;a.<span class="built_in">getY</span>()&lt;&lt;<span class="string">&quot; &quot;</span>; <span class="comment">//访问私有成员x,y</span></span><br><span class="line">    a.<span class="built_in">showCout</span>();  <span class="comment">////访问私有成员count，输出对象个数</span></span><br><span class="line"></span><br><span class="line">    <span class="function">point <span class="title">b</span><span class="params">(a)</span></span>;    <span class="comment">//定义对象b，其构造函数会使count增1</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;point B:&quot;</span>&lt;&lt;b.<span class="built_in">getX</span>()&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;b.<span class="built_in">getY</span>()&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    b.<span class="built_in">showCout</span>();   <span class="comment">//输出对象个数（用点b来输出）</span></span><br><span class="line">    a.<span class="built_in">showCout</span>();   <span class="comment">//输出对象个数（用点a来输出）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>上面的代码中缺点在于，如果一个点都没有的时候，想问问有几个点[count值为多少]却无法问。因为这里能访问count的唯一办法是访问showcount，但是showcount只能通过调用对象才能使用。</p>
+<p>也就是说，我<strong>们需要在一个对象都没有建立的情况下，还要能够访问静态数据成员count</strong>，所以引入了——</p>
+<h3 id="静态函数成员"><a href="#静态函数成员" class="headerlink" title="静态函数成员"></a>静态函数成员</h3><ul>
+<li><p><strong><u>类外代码可以使用类名和作用域操作符来调用静态成员函数。</u></strong></p>
+<p>明白是某个类的功能，而不是每个静态对象的功能</p>
+</li>
+<li><p><strong>静态成员函数</strong>主要<strong>用于处理</strong>该类的<strong>静态数据成员</strong>，可以直接调用静态成员函数。</p>
+</li>
+<li><p>如果访问<strong>非静态成员</strong>，要<strong>通过对象来访问</strong></p>
+</li>
+</ul>
+<h4 id="例题-3"><a href="#例题-3" class="headerlink" title="**例题"></a><strong><mark>**例题</mark></strong></h4><p>要构造point的概览</p>
+<img title="" src="https://pic1.imgdb.cn/item/67b7ee42d0e0a243d4013315.png" alt="" data-align="left" width="307">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">point</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">point</span>(<span class="type">int</span> x=<span class="number">0</span>,<span class="type">int</span> y=<span class="number">0</span>):<span class="built_in">x</span>(x),<span class="built_in">y</span>(y) </span><br><span class="line">    &#123;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">point</span>(point &amp;p)</span><br><span class="line">    &#123;</span><br><span class="line">        x=p.x;</span><br><span class="line">        y=p.y;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">point</span>() &#123;count--;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getX</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> x;&#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> y;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//输出静态数据成员</span></span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">showCount</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123; <span class="comment">//与之前不同的是void showCount-&gt;static void showCount添加了static</span></span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;object cout=&quot;</span>&lt;&lt;count&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:   </span><br><span class="line">    <span class="type">int</span> x,y;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count;  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> point::count=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    point::<span class="built_in">showCount</span>();   <span class="comment">//使用类名来调用对象个数：在一个对象都没有的时候也可以调用showcount了</span></span><br><span class="line">    <span class="function">point <span class="title">a</span><span class="params">(<span class="number">4</span>,<span class="number">5</span>)</span></span>;  </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;point A:&quot;</span>&lt;&lt;a.<span class="built_in">getX</span>()&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;a.<span class="built_in">getY</span>()&lt;&lt;<span class="string">&quot; &quot;</span>; </span><br><span class="line">    a.<span class="built_in">showCount</span>();  <span class="comment">////通过存在的对象名也可以调用对象个数函数</span></span><br><span class="line"></span><br><span class="line">    <span class="function">point <span class="title">b</span><span class="params">(a)</span></span>;    </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;point B:&quot;</span>&lt;&lt;b.<span class="built_in">getX</span>()&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;b.<span class="built_in">getY</span>()&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    b.<span class="built_in">showCount</span>();   </span><br><span class="line">    a.<span class="built_in">showCount</span>();   </span><br><span class="line">    point::<span class="built_in">showCount</span>();     <span class="comment">//使用类名来调用对象个数：在一个对象都没有的时候也可以调用showcount了</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.<strong>静态函数[static void showCount()]中是没有this指针的。</strong></p>
+<p><strong>因为静态函数属于整个类，不属于任何一个对象，所以没有隐含的this</strong></p>
+<p>this只能用于非静态成员函数内部的</p>
+<p>如下图</p>
+<img title="" src="https://pic1.imgdb.cn/item/67b7f0e5d0e0a243d40135b5.png" alt="" data-align="left" width="502">
+
+<p>2.<strong>非静态函数[int getX()]中有this指针。</strong></p>
+<p>在执行主函数中<code>cout&lt;&lt;&quot;point A:&quot;&lt;&lt;a.getX()&lt;&lt;&quot;,&quot;&lt;&lt;a.getY()&lt;&lt;&quot; &quot;;</code>该条命令前，查询得此时a的地址  **&amp;a为(point <em>) 0x61fe08</em>*</p>
+<p>下一步进入到<code>a.getX()</code>函数中时，可以发现，此时watches中<strong>this指针也为 0x61fe08</strong>。</p>
+<p>运行到<code>return x</code>可知其return的其实是this-&gt;x，即this指针所指向的x。</p>
+<p>可以知道<strong>每次调用非静态函数getX()时，都是通过对象名去调用</strong></p>
+<h2 id="友元-单向授权"><a href="#友元-单向授权" class="headerlink" title="友元[单向授权]"></a>友元[单向授权]</h2><img title="" src="https://pic1.imgdb.cn/item/67b7f632d0e0a243d4013822.png" alt="" width="525" data-align="left">
+
+<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><img title="" src="https://pic1.imgdb.cn/item/67b7f689d0e0a243d4013836.png" alt="" width="515" data-align="left">
+
+<h4 id="例题-4"><a href="#例题-4" class="headerlink" title="例题"></a>例题</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">point</span>&#123;  <span class="comment">//point类声明</span></span><br><span class="line"><span class="keyword">public</span>:<span class="comment">//外部接口</span></span><br><span class="line">    <span class="built_in">point</span>(<span class="type">int</span> x=<span class="number">0</span>,<span class="type">int</span> y=<span class="number">0</span>):<span class="built_in">x</span>(x),<span class="built_in">y</span>(y)&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> x;&#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> y;&#125;</span><br><span class="line">    <span class="comment">//友元函数声明。</span></span><br><span class="line">    <span class="comment">//其位置不固定，public,private都可以，他只是找个位置声明一下</span></span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="type">float</span> <span class="title">dist</span><span class="params">(point &amp;a,point &amp;b)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//友元函数</span></span><br><span class="line"><span class="comment">//(point&amp; a,point&amp; b)表示a是p1的别名,b是p2的别名。</span></span><br><span class="line"><span class="comment">//这就意味着二者是双向的关系，a改变了，p1也会跟着改变。有点危险</span></span><br><span class="line"><span class="comment">//所以要求变为了1.要传引用2.能够把私有成员的访问开放给dist函数3.还不希望在函数中破坏主函数的实参p1,p2——共享数据的保护。使用常引用作为实参</span></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">dist</span><span class="params">(point&amp; a,point&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> x=a.x-b.x;</span><br><span class="line">    <span class="type">double</span> y=a.y-b.y;</span><br><span class="line">    <span class="comment">//这里转为float类型是因为sqrt的返回类型是double</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">static_cast</span>&lt;<span class="type">float</span>&gt;(<span class="built_in">sqrt</span>(x*x+y*y));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">point <span class="title">p1</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>)</span>,<span class="title">p2</span><span class="params">(<span class="number">4</span>,<span class="number">5</span>)</span></span>;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;the distance is:&quot;</span>;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">dist</span>(p1,p2)&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="友元类"><a href="#友元类" class="headerlink" title="友元类"></a>友元类</h3><ul>
+<li><p>若一个类为另一个类的友元，则此类的所有成员都能访问对方类的私有成员</p>
+</li>
+<li><p>声明语法：将友元类名在另一个类中使用friend修饰说明</p>
+</li>
+</ul>
+<h4 id="例题-5"><a href="#例题-5" class="headerlink" title="例题"></a>例题</h4><img title="" src="https://pic1.imgdb.cn/item/67b7fc05d0e0a243d40139f4.png" alt="" width="538" data-align="left">
+
+<p>B：类的组装，部件组合</p>
+<p>B得到A的部件装上，但是A这个生产厂不给授权打开A的封装调整内部参数。</p>
+<p>所以friend class B;就是用于此，将A的内部参数拿来用；</p>
+<p><strong>写friend的那个是给授权，不是要权</strong></p>
+<p>B的所有成员函数，都成为A的友元函数，就可以访问A中的私有成员了</p>
+<h4 id="类的友元关系是单向的"><a href="#类的友元关系是单向的" class="headerlink" title="**类的友元关系是单向的"></a>**<strong>类的友元关系是单向的</strong></h4><img title="" src="https://pic1.imgdb.cn/item/67b7fd5ed0e0a243d4013a36.png" alt="" width="518">
+
+<hr>
+<p><strong>对于既需要共享，又需要防止改变的数据应该声明为常类型（用const进行修饰）</strong></p>
+<p><strong>对于不改变对象状态的成员函数应该声明为常函数</strong></p>
+<h2 id="共享数据的保护"><a href="#共享数据的保护" class="headerlink" title="共享数据的保护"></a>共享数据的保护</h2><h3 id="常类型-基本语法"><a href="#常类型-基本语法" class="headerlink" title="** 常类型[基本语法]"></a>**<mark> <strong>常类型[基本语法]</mark></strong></h3><ul>
+<li><p><strong>常对象：</strong></p>
+<p>必须进行初始化，不能被更新。</p>
+<p>const 类名 对象名  [在class A之外<code>A const a(3,4);</code></p>
+</li>
+<li><p><strong>常成员</strong></p>
+<p>用const进行修<strong>饰的类成员</strong>：常数据成员和常函数成员。</p>
+</li>
+<li><p><strong>常引用</strong></p>
+<p>被引用的对象不能被更新。</p>
+<p>比如<code>float dist(point&amp; a,point&amp; b)</code>这里为了不修改到主函数的p1引入</p>
+<p>const 类型说明符 &amp;引用名</p>
+</li>
+<li><p><strong>常数组</strong></p>
+<p>类型说明符 const 数组名[大小]….</p>
+</li>
+<li><p><strong>常指针</strong></p>
+<p>指向常量的指针[第六章]</p>
+</li>
+</ul>
+<h4 id="常对象"><a href="#常对象" class="headerlink" title="常对象"></a>常对象</h4><img title="" src="https://pic1.imgdb.cn/item/67b80040d0e0a243d4013abe.png" alt="" width="342" data-align="left">
+
+<p>1.赋值2.set值3.move…</p>
+<hr>
+<p><strong>一个常对象无法调用一个普通的函数，所以引入了常成员函数</strong></p>
+<h4 id="常成员"><a href="#常成员" class="headerlink" title="常成员"></a>常成员</h4><h5 id="函数成员可以定义为常成员"><a href="#函数成员可以定义为常成员" class="headerlink" title="函数成员可以定义为常成员"></a>函数成员可以定义为常成员</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">R</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">R</span>(<span class="type">int</span> r1,<span class="type">int</span> r2):<span class="built_in">r1</span>(r1),<span class="built_in">r2</span>(r2) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> r1,r2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">R::print</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;r1&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;r2&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一个const对象是不能用一个普通函数来操作的 所以需要另起一个相同的函数末尾给上承诺声明const</span></span><br><span class="line"><span class="comment">//这个声明的意思是，我是绝对不会改变对象状态的</span></span><br><span class="line"><span class="comment">//有了这个声明，编译器在执行时，会特别注意这个对象的状态有没有被改变。没有变，OL，变了。报错</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">R::print</span><span class="params">()</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;r1&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;r2&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">R <span class="title">a</span><span class="params">(<span class="number">5</span>,<span class="number">4</span>)</span></span>;</span><br><span class="line">    a.<span class="built_in">print</span>(); <span class="comment">//调用void print()</span></span><br><span class="line">    <span class="function"><span class="type">const</span> R <span class="title">b</span><span class="params">(<span class="number">20</span>,<span class="number">52</span>)</span></span>;   <span class="comment">//常对象</span></span><br><span class="line">    b.<span class="built_in">print</span>();  <span class="comment">//调用void print() const</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.<code>void R::print() const</code>与<code>void R::print()</code>一定需要两个版本吗？</p>
+<p><u>根据需要，如果这两个函数体内部是一模一样的，可以只留下<code>void R::print() const</code>这个，既可以让非常对象进行调用这个函数，也可以便于声明常对象也能用。</u></p>
+<p>因为对于不带const承诺的<code>void R::print()</code>，常对象无法使用</p>
+<hr>
+<h5 id="数据成员定义为常成员"><a href="#数据成员定义为常成员" class="headerlink" title="数据成员定义为常成员"></a>数据成员定义为常成员</h5><p>例题：</p>
+<p><strong>静态常数据成员：</strong></p>
+<ul>
+<li><p><strong>static表示为该类的所有对象共享</strong></p>
+</li>
+<li><p><strong>const表示这个b数据是一直不变不能改动的</strong></p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">A</span>(<span class="type">int</span> i);  <span class="comment">//自定义类的构造函数</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span></span>;  <span class="comment">//类的函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> a;  <span class="comment">//账号数字不能变的，余额是可以变的</span></span><br><span class="line">    <span class="comment">//静态常数据成员，例如pi，为整个类对象共享，但值不能变</span></span><br><span class="line">    <span class="type">static</span> <span class="type">const</span> <span class="type">int</span> b; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><code>A::A(int i):a(i)&#123;&#125;</code></p>
+<p>在之前的学习中，a在初始化列表中进行初始化即<code>A::A(int i):a(i)</code>，也可以放在{}进行初始化即<code>A::A(int i)&#123;a=i;&#125;</code>。</p>
+<p>但是在这里，由于a被<code>const int a;</code>成为常数据成员了，无法赋值改变状态，所以第二种放在大括号中的初始化就会报错了，只能使用第一种</p>
+<p><strong>常成员，在任何地方都不能在其上面运行赋值表达式</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> A::b=<span class="number">10</span>; <span class="comment">//关于b的类外初始化。A::b用于表示b限定在A这个大类中</span></span><br><span class="line">A::<span class="built_in">A</span>(<span class="type">int</span> i):<span class="built_in">a</span>(i)&#123;&#125;  <span class="comment">//关于类A的构造函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">A::print</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;a&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;b&lt;&lt;endl; <span class="comment">//若是在这里改变了a的值比如a=8;会直接报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>主函数</p>
+<p>建立对象a和b，并以100和0作为初值，分别调用构造函数，</p>
+<p>通过构造函数的初始化列表给对象的常数据成员初始化。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">A <span class="title">a1</span><span class="params">(<span class="number">100</span>)</span>,<span class="title">a2</span><span class="params">(<span class="number">0</span>)</span>：</span></span><br><span class="line"><span class="function">    a1.<span class="title">print</span><span class="params">()</span></span>;</span><br><span class="line">    a<span class="number">2.</span><span class="built_in">print</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>大部分的时候，<strong>传对象的引用</strong><code>(point&amp; a)</code>[一般传引用不传值]过去并不需要双向传递，不需要把a的状态进行改变，<strong>不需要破坏实参</strong>，所以提出了——</p>
+<h3 id="常引用-前面提及的float-dist-point-a-问题"><a href="#常引用-前面提及的float-dist-point-a-问题" class="headerlink" title="常引用[前面提及的float dist(point&amp; a)问题]"></a>常引用[前面提及的float dist(point&amp; a)问题]</h3><img title="" src="https://pic1.imgdb.cn/item/67b80d68d0e0a243d4013e65.png" alt="" width="429" data-align="left">
+
+<p>所以友元函数中，为保单向传递：</p>
+<p>1.把class中的友元声明<code>friend float dist(point &amp;p1,point &amp;p2);</code></p>
+<p>改为了<code>friend float dist(const point &amp;p1,const point &amp;p2);</code></p>
+<p>2.把类外定义的友元定义函数初始化部分<code>float dist(point &amp;p1,point &amp;p2)&#123;&#125;</code></p>
+<p>改为了<code>float dist(const point &amp;p1,const point &amp;p2)&#123;&#125;</code></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><img title="" src="https://pic1.imgdb.cn/item/67b80f4cd0e0a243d4013f19.png" alt="" width="464" data-align="left">
+
       
     </div>
 
@@ -235,7 +527,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-20 21:44:35" itemprop="dateModified" datetime="2025-02-20T21:44:35+08:00">2025-02-20</time>
+                <time title="Modified: 2025-02-21 13:18:47" itemprop="dateModified" datetime="2025-02-21T13:18:47+08:00">2025-02-21</time>
               </span>
 
           
@@ -282,7 +574,7 @@
 </ul>
 <hr>
 <p><mark>例题：</mark></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实现类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">clock</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">setTime</span><span class="params">(<span class="type">int</span> newH=<span class="number">0</span>,<span class="type">int</span> newM=<span class="number">0</span>,<span class="type">int</span> newS=<span class="number">0</span>)</span></span>;<span class="comment">//给予了默认参数值</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">showTime</span><span class="params">()</span></span>;<span class="comment">//类体中的函数，共享数据成员</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="type">int</span> hour,minute,second;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实现成员函数体clock::专门用于clock类自己数据的</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">clock::setTime</span><span class="params">(<span class="type">int</span> newH,<span class="type">int</span> newM,<span class="type">int</span> newS)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//不论是public还是private，都是可以被类体中的函数直接访问到其数据成员的</span></span><br><span class="line">    <span class="comment">//且完全不需要经由返回值传递即return</span></span><br><span class="line">    hour=newH;</span><br><span class="line">    minute=newM;</span><br><span class="line">    second=newS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">clock::showTime</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;hour&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;minute&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;second&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用对象</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    clock myclock;</span><br><span class="line">    myclock.<span class="built_in">setTime</span>(<span class="number">8</span>,<span class="number">30</span>,<span class="number">30</span>);</span><br><span class="line">    myclock.<span class="built_in">showTime</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实现类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">clock</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">setTime</span><span class="params">(<span class="type">int</span> newH=<span class="number">0</span>,<span class="type">int</span> newM=<span class="number">0</span>,<span class="type">int</span> newS=<span class="number">0</span>)</span></span>;<span class="comment">//给予了默认参数值</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">showTime</span><span class="params">()</span></span>;<span class="comment">//类体中的函数，共享数据成员</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="type">int</span> hour,minute,second;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实现成员函数体clock::标识专门用于clock类自己数据的，即类作用域限定符</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">clock::setTime</span><span class="params">(<span class="type">int</span> newH,<span class="type">int</span> newM,<span class="type">int</span> newS)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//不论是public还是private，都是可以被类体中的函数直接访问到其数据成员的</span></span><br><span class="line">    <span class="comment">//且完全不需要经由返回值传递即return</span></span><br><span class="line">    hour=newH;</span><br><span class="line">    minute=newM;</span><br><span class="line">    second=newS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">clock::showTime</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;hour&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;minute&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;second&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用对象</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    clock myclock;</span><br><span class="line">    myclock.<span class="built_in">setTime</span>(<span class="number">8</span>,<span class="number">30</span>,<span class="number">30</span>);</span><br><span class="line">    myclock.<span class="built_in">showTime</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>与void setTime()不同的是void clock::setTime()多出来的<code>clock::</code>，表明了这个函数不是普通的独立函数，即不是全局函数，是一个类的成员，专门用于处理类的数据成员的</p>
@@ -509,18 +801,24 @@
 <p>注意事项</p>
 <img title="" src="https://pic1.imgdb.cn/item/67b730b7d0e0a243d4010fb5.png" alt="" width="581">
 
-
-
-<p>易漏的点</p>
-<p>class a{};有分号，别忘记</p>
-<p>定义构造函数：</p>
+<hr>
+<h2 id="回顾知识点"><a href="#回顾知识点" class="headerlink" title="回顾知识点"></a>回顾知识点</h2><p>1.class a{};有分号，别忘记</p>
+<p>2.定义构造函数：</p>
 <ul>
 <li><p>默认<code>clock::clock():hour(0),minute(0),second(0)&#123;&#125;</code></p>
 </li>
 <li><p>自定义<code>clock::clock(int newH,int newM,int newS)</code>:hour(newH),minute(newM),second(newS)<code>&#123;&#125;</code> 无分号</p>
 </li>
 </ul>
-<ol>
+<p>3.定义复制函数</p>
+<p><code>point(const point&amp; p);</code>   [class point的public中]</p>
+<p><code>point::point(const point&amp; p)</code>[类外复制构造函数的实现]</p>
+<p>4.在类体内定义函数时，不需要在函数名前面加上类名；但<strong>成员函数在类外定义</strong>时，<strong>必须在函数名前面加上类名</strong>，予以限定。限定为类<code>void clock::showtime()</code></p>
+<p>5.<code>void point::print()&#123;&#125;</code>这个括号()里什么都没有写，就可以直接在函数中用x,y，调用也是直接<code>a.print();</code>   </p>
+<p>但是在复制函数中<code>point::point(point&amp; a)&#123;&#125;</code>中没有void，()中却有类的初始化。</p>
+<p>6.在使用构造函数创建对象时</p>
+<p>构造函数为<code>A::A(int i):a(i)&#123;&#125;</code>，创建对象a1为<code>A a1(100)</code>-&gt;int i(0)-&gt;int i&#x3D;0</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
 <li></li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br><span class="line">Node* p;<span class="comment">//使用</span></span><br></pre></td></tr></table></figure>
@@ -1006,7 +1304,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-20 16:31:29" itemprop="dateModified" datetime="2025-02-20T16:31:29+08:00">2025-02-20</time>
+                <time title="Modified: 2025-02-21 12:31:13" itemprop="dateModified" datetime="2025-02-21T12:31:13+08:00">2025-02-21</time>
               </span>
 
           
@@ -1190,7 +1488,8 @@
 
 <h3 id="8-函数重载"><a href="#8-函数重载" class="headerlink" title="8.函数重载"></a>8.函数重载</h3><p>由于面向过程的程序语言中，对于实现同一个功能，但是形参表不同的，需要多次定义不同的函数，与函数名。使用起来不方便，所以引入</p>
 <p><u>c++运行功能相近的函数在相同的作用域内以相同函数名声明，从而形成重载，方便使用，便于记忆。</u></p>
-<p><u>要求重载函数的参数表不同，或类型不同，或个数不同。</u></p>
+<p><u><strong>要求重载函数的参数表不同，或类型不同，或个数不同。或一个后缀承诺了const，一个没有也可以区分</strong></u></p>
+<p><strong>重载函数是靠参数表进行区分的</strong></p>
 <img title="" src="https://pic1.imgdb.cn/item/67b5da85d0e0a243d400cfb1.png" alt="" width="396" data-align="left">
 
 <ul>
@@ -2101,7 +2400,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
