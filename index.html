@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Zootopia World · Judith Hopps</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* 基础样式 */
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: linear-gradient(180deg, #f5f7fa, #e9eef3);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #e0f7fa 0%, #f0f0f0 100%);
       color: #333;
     }
 
@@ -19,44 +19,71 @@
     }
 
     header h1 {
-      font-size: 2.6rem;
+      font-size: 3rem;
       margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    header h1:hover {
+      transform: scale(1.05);
     }
 
     header p {
-      color: #666;
+      color: #555;
       max-width: 600px;
       margin: 0 auto;
       line-height: 1.6;
+      font-size: 1.1rem;
     }
 
+    /* 世界入口布局 */
     .world {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 3rem auto;
       padding: 0 1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
 
+    /* 卡片样式 */
     .card {
-      background: white;
-      border-radius: 14px;
-      padding: 1.5rem;
+      background: linear-gradient(135deg, #ffffff, #fafafa);
+      border-radius: 16px;
+      padding: 1.8rem 1.5rem;
       text-decoration: none;
       color: inherit;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* 小彩蛋图标 */
+    .card::before {
+      content: "🐾";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 1.3rem;
+      opacity: 0.6;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      transform: rotate(20deg) scale(1.2);
+      opacity: 1;
     }
 
     .card h2 {
       margin-top: 0;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
     }
 
     .card p {
@@ -65,30 +92,40 @@
       margin-bottom: 0;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 3rem 1rem;
       font-size: 0.9rem;
       color: #888;
     }
+
+    /* 响应式文字缩放 */
+    @media(max-width:600px){
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .card h2 {
+        font-size: 1.3rem;
+      }
+    }
   </style>
 </head>
-
 <body>
 
 <header>
   <h1>🦊 Zootopia World</h1>
   <p>
-    这是 Judy Hopps 的个人世界。  
-    记录、实验、冒险与一些温柔而疯狂的想法。
+    欢迎来到 Judy Hopps 的疯狂动物城世界。<br>
+    这里有出租屋、冒险区、城市档案馆、OS实验室，还有访客留言板。<br>
+    每个区域都是一个小世界，点击进入探索吧！
   </p>
 </header>
 
 <section class="world">
-
   <a class="card" href="blog-index.html">
     <h2>🏠 Judy 的出租屋</h2>
-    <p>博客 · 日常 · 思考 · 世界的另一面</p>
+    <p>博客 / 日常 / 思考 / 世界的另一面</p>
   </a>
 
   <a class="card" href="arcade/">
@@ -108,9 +145,8 @@
 
   <a class="card" href="guestbook/">
     <h2>💬 留言板</h2>
-    <p>给这个世界留下些什么</p>
+    <p>给这个世界留下你的痕迹</p>
   </a>
-
 </section>
 
 <footer>
