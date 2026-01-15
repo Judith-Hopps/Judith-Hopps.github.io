@@ -16,6 +16,7 @@ html, body {
 
 /* ===== 房间整体 ===== */
 .scene {
+    
   position: relative;
   width: 100%;
   height: 100%;
@@ -168,12 +169,78 @@ html, body {
 .note:hover span {
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+
+  body {
+    overflow: auto;
+  }
+
+  /* 隐藏整个房间的复杂物件 */
+  .window,
+  .desk,
+  .shelf,
+  .note,
+  .light {
+    display: none;
+  }
+
+  /* 用一个简单的进入视图代替 */
+  .scene {
+    background: linear-gradient(180deg, #121820, #1e2a38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .mobile-entry {
+    color: #eaeaea;
+    max-width: 420px;
+    text-align: center;
+  }
+
+  .mobile-entry h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-entry p {
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  .mobile-entry a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 999px;
+    background: #ffb703;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+
+
 </style>
 </head>
 
 <body>
 
 <div class="scene">
+
+  <div class="mobile-entry">
+    <h1>Judy 的出租屋</h1>
+    <p>
+      夜已经很深了。<br>
+      城市还醒着，房间里只有一盏灯。
+    </p>
+    <a href="blog-index.html">进入房间</a>
+  </div>
+
 
   <div class="light"></div>
 
