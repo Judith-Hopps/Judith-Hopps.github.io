@@ -23,6 +23,10 @@ html, body {
   background:
     radial-gradient(circle at 30% 40%, #2e3b4e, #121820 70%);
 }
+/* 默认：PC 端隐藏手机入口 */
+.mobile-entry {
+  display: none;
+}
 
 /* 微弱灯光 */
 .light {
@@ -171,6 +175,9 @@ html, body {
 }
 
 @media (max-width: 768px) {
+  .mobile-entry {
+  display: block;
+  }
 
   body {
     overflow: auto;
