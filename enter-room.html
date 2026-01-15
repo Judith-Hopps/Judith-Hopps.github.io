@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Entering Judy's Room</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: black;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .enter-scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 黑色淡入遮罩 */
+    .fade-mask {
+      position: absolute;
+      inset: 0;
+      background: black;
+      pointer-events: none;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 1; }
+      to   { opacity: 0; }
+    }
+
+    /* Tap to enter（非常克制） */
+    .hint {
+      position: absolute;
+      bottom: 10%;
+      width: 100%;
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      animation: hintFade 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes hintFade {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.8; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="enter-scene" id="scene">
+  <video
+    id="enterVideo"
+    src="media/judy-door.mp4"
+    autoplay
+    muted
+    playsinline
+  ></video>
+
+  <div class="fade-mask"></div>
+  <div class="hint">TAP TO ENTER</div>
+</div>
+
+<script>
+  const video = document.getElementById('enterVideo');
+
+  // 视频播放完 → 跳转到 Judy 桌面
+  video.addEventListener('ended', () => {
+    window.location.href = 'judy-room.html';
+  });
+
+  // 允许点击直接进入（手机友好）
+  document.getElementById('scene').addEventListener('click', () => {
+    window.location.href = 'room-mobile.html';
+  });
+</script>
+
+</body>
+</html>
