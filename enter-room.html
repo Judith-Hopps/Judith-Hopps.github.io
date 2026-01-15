@@ -1,98 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Entering Judy's Room</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      background-color: black;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { width:100%; height:100%; overflow:hidden; background:black; font-family: system-ui, sans-serif; }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .enter-scene {
+    /* Hero 容器 */
+    .hero-container {
       position: relative;
       width: 100vw;
       height: 100vh;
-      background: black;
+      overflow: hidden;
     }
 
-    video {
+    /* 背景模糊层 */
+    .bg-video {
+      position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: blur(20px) brightness(0.6);
+      transform: scale(1.2);
     }
 
-    /* 黑色淡入遮罩 */
-    .fade-mask {
+    /* 前景完整视频 */
+    .main-video {
       position: absolute;
-      inset: 0;
-      background: black;
-      pointer-events: none;
-      animation: fadeIn 2s ease-out forwards;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 2;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 1; }
-      to   { opacity: 0; }
-    }
-
-    /* Tap to enter（非常克制） */
+    /* Tap to enter 提示 */
     .hint {
       position: absolute;
       bottom: 10%;
       width: 100%;
       text-align: center;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.8);
       font-size: 14px;
       letter-spacing: 0.2em;
       animation: hintFade 3s ease-in-out infinite;
+      z-index: 3;
       pointer-events: none;
     }
 
     @keyframes hintFade {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 0.8; }
+      0%,100% { opacity:0.2; }
+      50% { opacity:0.8; }
     }
   </style>
 </head>
 
 <body>
 
-<div class="enter-scene" id="scene">
-  <video
-    id="enterVideo"
-    src="media/judy-door.mp4"
-    autoplay
-    muted
-    playsinline
-  ></video>
+<div class="hero-container" id="hero">
+  <!-- 背景模糊 -->
+  <video class="bg-video" src="media/judy-door.mp4" autoplay muted playsinline></video>
+  <!-- 前景完整 -->
+  <video class="main-video" src="media/judy-door.mp4" autoplay muted playsinline id="enterVideo"></video>
 
-  <div class="fade-mask"></div>
   <div class="hint">TAP TO ENTER</div>
 </div>
 
 <script>
   const video = document.getElementById('enterVideo');
+  const hero = document.getElementById('hero');
 
-  // 视频播放完 → 跳转到 Judy 桌面
+  // 视频播放完毕自动跳转
   video.addEventListener('ended', () => {
-    window.location.href = 'judy-room.html';
+    window.location.href = 'room-mobile.html';
   });
 
-  // 允许点击直接进入（手机友好）
-  document.getElementById('scene').addEventListener('click', () => {
-    window.location.href = 'judy-room.html';
+  // 点击 Hero 区域直接进入
+  hero.addEventListener('click', () => {
+    window.location.href = 'room-mobile.html';
   });
 </script>
 
