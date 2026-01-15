@@ -2,155 +2,178 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>Zootopia World · Judith Hopps</title>
+  <title>Zootopia · Tech Street</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* 基础样式 */
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: linear-gradient(180deg, #e0f7fa 0%, #f0f0f0 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #b8d8e6 0%, #eef3f6 60%);
       color: #333;
     }
 
     header {
       text-align: center;
-      padding: 4rem 1rem 2rem;
+      padding: 4rem 1rem 2.5rem;
     }
 
     header h1 {
       font-size: 3rem;
-      margin-bottom: 0.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    header h1:hover {
-      transform: scale(1.05);
+      margin-bottom: 0.8rem;
     }
 
     header p {
-      color: #555;
-      max-width: 600px;
+      max-width: 680px;
       margin: 0 auto;
-      line-height: 1.6;
+      color: #555;
+      line-height: 1.7;
       font-size: 1.1rem;
     }
 
-    /* 世界入口布局 */
-    .world {
-      max-width: 1100px;
-      margin: 3rem auto;
+    /* 街道容器 */
+    .street {
+      max-width: 1200px;
+      margin: 3rem auto 4rem;
       padding: 0 1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
     }
 
-    /* 卡片样式 */
-    .card {
-      background: linear-gradient(135deg, #ffffff, #fafafa);
-      border-radius: 16px;
-      padding: 1.8rem 1.5rem;
+    /* 店铺 */
+    .shop {
+      background: linear-gradient(180deg, #ffffff, #f7f7f7);
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem 2rem;
       text-decoration: none;
       color: inherit;
       box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    .shop:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.16);
     }
 
-    /* 小彩蛋图标 */
-    .card::before {
-      content: "🐾";
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 1.3rem;
-      opacity: 0.6;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+    /* 招牌 */
+    .sign {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
     }
 
-    .card:hover::before {
-      transform: rotate(20deg) scale(1.2);
-      opacity: 1;
-    }
-
-    .card h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .card p {
+    .desc {
+      font-size: 0.95rem;
       color: #666;
-      line-height: 1.5;
-      margin-bottom: 0;
+      line-height: 1.6;
     }
 
-    /* Footer */
+    /* 名句（暗戳戳） */
+    .quote {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.2rem;
+      font-size: 0.85rem;
+      color: #888;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.4s ease;
+      font-style: italic;
+    }
+
+    .shop:hover .quote {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 不同店铺的细微区分 */
+    .home { border-top: 5px solid #ffb703; }
+    .arcade { border-top: 5px solid #ff6f61; }
+    .lab { border-top: 5px solid #4dabf7; }
+    .archive { border-top: 5px solid #8bc34a; }
+    .square { border-top: 5px solid #9c27b0; }
+
     footer {
       text-align: center;
       padding: 3rem 1rem;
+      color: #777;
       font-size: 0.9rem;
-      color: #888;
     }
 
-    /* 响应式文字缩放 */
-    @media(max-width:600px){
+    @media (max-width: 600px) {
       header h1 {
-        font-size: 2.2rem;
-      }
-      .card h2 {
-        font-size: 1.3rem;
+        font-size: 2.3rem;
       }
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>🦊 Zootopia World</h1>
+  <h1>🦊 Zootopia · Tech Street</h1>
   <p>
-    欢迎来到 Judy Hopps 的疯狂动物城世界。<br>
-    这里有出租屋、冒险区、城市档案馆、OS实验室，还有访客留言板。<br>
-    每个区域都是一个小世界，点击进入探索吧！
+    这不是一座普通的城市。<br>
+    这里记录代码、实验、失败、好奇心，<br>
+    以及一个开发者在疯狂动物城里的私人街区。
   </p>
 </header>
 
-<section class="world">
-  <a class="card" href="blog-index.html">
-    <h2>🏠 Judy 的出租屋</h2>
-    <p>博客 / 日常 / 思考 / 世界的另一面</p>
+<section class="street">
+
+  <a class="shop home" href="blog-index.html">
+    <div class="sign">🏠 Judy 的出租屋</div>
+    <div class="desc">
+      技术博客 · 日常记录 · 想法与世界<br>
+      一间不太整洁、但一直亮着灯的房间。
+    </div>
+    <div class="quote">“Life’s a little bit messy.”</div>
   </a>
 
-  <a class="card" href="arcade/">
-    <h2>🎮 冒险区 · Arcade</h2>
-    <p>小游戏、实验性玩法、城市角落的乐趣</p>
+  <a class="shop arcade" href="arcade/">
+    <div class="sign">🎮 Adventure Arcade</div>
+    <div class="desc">
+      小游戏 · 实验性项目 · 有点危险的乐趣<br>
+      有些东西，只有试了才知道会发生什么。
+    </div>
+    <div class="quote">“You know you love me.”</div>
   </a>
 
-  <a class="card" href="archive/">
-    <h2>🏛 城市档案馆</h2>
-    <p>电影、名著、歌剧中的名言与片段</p>
+  <a class="shop lab" href="lab/">
+    <div class="sign">🧠 Underground Lab</div>
+    <div class="desc">
+      操作系统 · 底层实验 · 系统与秩序<br>
+      城市下面，藏着真正决定一切的东西。
+    </div>
+    <div class="quote">“Fear always works.”</div>
   </a>
 
-  <a class="card" href="lab/">
-    <h2>🧠 Underground Lab</h2>
-    <p>操作系统实验、底层世界的探索</p>
+  <a class="shop archive" href="archive/">
+    <div class="sign">🏛 City Archive</div>
+    <div class="desc">
+      电影 · 名著 · 歌剧 · 名句收藏<br>
+      有些话，会在多年后突然理解。
+    </div>
+    <div class="quote">“Anyone can be anything.”</div>
   </a>
 
-  <a class="card" href="guestbook/">
-    <h2>💬 留言板</h2>
-    <p>给这个世界留下你的痕迹</p>
+  <a class="shop square" href="guestbook/">
+    <div class="sign">💬 City Square</div>
+    <div class="desc">
+      留言板 · 城市广场<br>
+      路过的人，偶尔也会留下些什么。
+    </div>
+    <div class="quote">“It’s called a hustle, sweetheart.”</div>
   </a>
+
 </section>
 
 <footer>
-  © Judith Hopps · Zootopia World
+  © Judith Hopps · Zootopia Tech Street
 </footer>
 
 </body>
