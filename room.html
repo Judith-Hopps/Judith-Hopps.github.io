@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Judy 的出租屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+                   "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #f2efe9, #e6e1d8);
+      color: #3a3a3a;
+    }
+
+    .room {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    /* 窗户 */
+    .window {
+      background: #cfe8f3;
+      border-radius: 18px;
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 2.5rem;
+      box-shadow: inset 0 0 0 4px #ffffff88;
+    }
+
+    .window p {
+      margin: 0;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    /* 沙发 */
+    .sofa {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.8rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .sofa h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+
+    .post {
+      margin-bottom: 1rem;
+    }
+
+    .post a {
+      text-decoration: none;
+      color: #2a6df4;
+    }
+
+    /* 书架 */
+    .shelf {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .book {
+      background: #8d6e63;
+      color: #fff;
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    /* 桌面 */
+    .desk {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.8rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 2.5rem;
+    }
+
+    /* 彩蛋 */
+    .note {
+      font-size: 0.85rem;
+      color: #777;
+      text-align: right;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="room">
+
+  <div class="window">
+    <p>窗外的城市很吵，但我还在想一个没写完的函数。</p>
+  </div>
+
+  <div class="sofa">
+    <h2>🛋 最近放在沙发上的东西</h2>
+    <div class="post">
+      <a href="#">如何从零写一个最小操作系统内核</a>
+    </div>
+    <div class="post">
+      <a href="#">为什么我决定自己实现一次调度器</a>
+    </div>
+    <div class="post">
+      <a href="#">在疯狂动物城里学计算机是什么体验</a>
+    </div>
+  </div>
+
+  <div class="shelf">
+    <a class="book" href="#">操作系统</a>
+    <a class="book" href="#">底层原理</a>
+    <a class="book" href="#">随笔</a>
+    <a class="book" href="#">学习记录</a>
+  </div>
+
+  <div class="desk">
+    <h2>🧾 桌面上正在进行的事</h2>
+    <ul>
+      <li>实现一个最小 bootloader</li>
+      <li>阅读《Operating Systems: Three Easy Pieces》</li>
+      <li>整理一篇关于内存分页的文章</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    “Try to make the world a better place.” — someone left this here.
+  </div>
+
+</div>
+
+</body>
+</html>
