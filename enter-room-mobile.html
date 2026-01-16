@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Entering Judy's Room</title>
+
+  <!--
+    viewport 设置：
+    - width=device-width：以设备宽度作为布局基准
+    - initial-scale=1.0：不缩放
+    对“视频 + 覆盖 UI”是必须的
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* ===============================
+       1️⃣ 全局重置
+       =============================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;      /* 防止手机端上下露白 */
+      background: black;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* ===============================
+       2️⃣ Hero 容器（整个场景）
+       =============================== */
+    .hero-container {
+      position: relative;   /* ⚠️ 核心：所有覆盖物相对它定位 */
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ===============================
+       3️⃣ 背景模糊视频
+       作用：
+       - 延展画面
+       - 防止主视频 contain 留黑边
+       =============================== */
+    .bg-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(20px) brightness(0.6);
+      transform: scale(1.2);
+      z-index: 1;
+    }
+
+    /* ===============================
+       4️⃣ 前景主视频（完整显示）
+       =============================== */
+    .main-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 2;
+    }
+
+    /* ===============================
+       5️⃣ Tap to enter 提示
+       =============================== */
+    .hint {
+      position: absolute;
+      bottom: 10%;
+      width: 100%;
+      text-align: center;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      animation: hintFade 3s ease-in-out infinite;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    @keyframes hintFade {
+      0%,100% { opacity:0.2; }
+      50% { opacity:0.8; }
+    }
+
+    /* =================================================
+       ===== 新增部分：电子管电子钟 =====
+       ================================================= */
+
+    /* ===============================
+       6️⃣ 电子钟整体容器
+       - 绝对定位
+       - 相对于 hero-container
+       =============================== */
+    .clock {
+      position: absolute;
+
+      /*
+        这里的 top / left 是“场景坐标”
+        百分比基于视频区域，而不是网页
+        👉 你之后只需要调这两个值
+      */
+      top: 38%;
+      left: 58%;
+
+      display: flex;
+      gap: 6px;
+
+      /* 透视效果（整体） */
+      transform:
+        perspective(600px)
+        rotateY(-18deg)
+        rotateX(8deg);
+
+      z-index: 3;
+    }
+
+    /* ===============================
+       7️⃣ 单个数字容器
+       =============================== */
+    .digit {
+      position: relative;
+      width: 24px;
+      height: 44px;
+    }
+
+    /* ===============================
+       8️⃣ 单根电子管（段）
+       =============================== */
+    .seg {
+      position: absolute;
+      background: #66ffff;
+
+      /* 发光感 */
+      box-shadow:
+        0 0 6px rgba(102,255,255,0.8),
+        0 0 14px rgba(102,255,255,0.5);
+
+      transform-origin: left center;
+    }
+
+    /* 垂直段：| → \ */
+    .seg.v {
+      width: 4px;
+      height: 18px;
+      transform: skewY(-12deg);
+    }
+
+    /* 水平段：— → 斜 */
+    .seg.h {
+      height: 4px;
+      width: 16px;
+      transform: skewX(-8deg);
+    }
+
+    /* ===============================
+       9️⃣ 段位置定义
+       =============================== */
+    .a { top: 0; left: 4px; }
+    .b { top: 3px; right: 0; }
+    .c { bottom: 3px; right: 0; }
+    .d { bottom: 0; left: 4px; }
+    .e { bottom: 3px; left: 0; }
+    .f { top: 3px; left: 0; }
+    .g { top: 20px; left: 4px; }
+
+    /* 默认关闭 */
+    .seg { opacity: 0.1; }
+
+    /* 点亮 */
+    .on { opacity: 1; }
+
+  </style>
+</head>
+
+<body>
+
+<div class="hero-container" id="hero">
+
+  <!-- 背景模糊视频 -->
+  <video class="bg-video"
+         src="media/room-door.mp4"
+         autoplay muted playsinline></video>
+
+  <!-- 前景主视频 -->
+  <video class="main-video"
+         src="media/room-door.mp4"
+         autoplay muted playsinline
+         id="enterVideo"></video>
+
+  <!-- ===============================
+       电子钟（覆盖在视频上）
+       =============================== -->
+  <div class="clock" id="clock">
+    <!-- 每个 digit 都是一个 7 段管 -->
+    <div class="digit" data-num>
+      <span class="seg h a"></span>
+      <span class="seg v b"></span>
+      <span class="seg v c"></span>
+      <span class="seg h d"></span>
+      <span class="seg v e"></span>
+      <span class="seg v f"></span>
+      <span class="seg h g"></span>
+    </div>
+    <div class="digit" data-num></div>
+  </div>
+
+  <div class="hint">TAP TO ENTER</div>
+</div>
+
+<script>
+  const video = document.getElementById('enterVideo');
+  const hero = document.getElementById('hero');
+
+  /* ===============================
+     电子钟逻辑
+     =============================== */
+
+  const digitMap = {
+    0: ['a','b','c','d','e','f'],
+    1: ['b','c'],
+    2: ['a','b','g','e','d'],
+    3: ['a','b','g','c','d'],
+    4: ['f','g','b','c'],
+    5: ['a','f','g','c','d'],
+    6: ['a','f','e','d','c','g'],
+    7: ['a','b','c'],
+    8: ['a','b','c','d','e','f','g'],
+    9: ['a','b','c','d','f','g']
+  };
+
+  function renderDigit(el, num) {
+    const segs = el.querySelectorAll('.seg');
+    segs.forEach(s => s.classList.remove('on'));
+    digitMap[num].forEach(cls => {
+      el.querySelector('.' + cls).classList.add('on');
+    });
+  }
+
+  function updateClock() {
+    const now = new Date();
+    const h = now.getHours().toString().padStart(2,'0');
+    const m = now.getMinutes().toString().padStart(2,'0');
+    const nums = document.querySelectorAll('[data-num]');
+    renderDigit(nums[0], h[0]);
+    renderDigit(nums[1], h[1]);
+  }
+
+  updateClock();
+
+  /* ===============================
+     页面交互逻辑
+     =============================== */
+
+  video.addEventListener('ended', () => {
+    window.location.href = 'room-mobile.html';
+  });
+
+  hero.addEventListener('click', () => {
+    window.location.href = 'room-mobile.html';
+  });
+</script>
+
+</body>
+</html>
