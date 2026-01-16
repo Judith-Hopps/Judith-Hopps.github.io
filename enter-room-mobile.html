@@ -144,6 +144,18 @@
       transform-origin: left center;
     }
 
+    /* 👇 冒号样式就放在这里 */
+    .colon {
+      font-size: 26px;
+      color: #66ffff;
+      margin: 0 6px;
+      line-height: 44px;
+
+      text-shadow:
+        0 0 6px rgba(102,255,255,0.8),
+        0 0 14px rgba(102,255,255,0.5);
+    }
+
     /* 垂直段：| → \ */
     .seg.v {
       width: 4px;
@@ -196,19 +208,57 @@
   <!-- ===============================
        电子钟（覆盖在视频上）
        =============================== -->
-  <div class="clock" id="clock">
-    <!-- 每个 digit 都是一个 7 段管 -->
-    <div class="digit" data-num>
-      <span class="seg h a"></span>
-      <span class="seg v b"></span>
-      <span class="seg v c"></span>
-      <span class="seg h d"></span>
-      <span class="seg v e"></span>
-      <span class="seg v f"></span>
-      <span class="seg h g"></span>
-    </div>
-    <div class="digit" data-num></div>
+<div class="clock" id="clock">
+
+  <!-- 小时 tens -->
+  <div class="digit" data-num>
+    <span class="seg h a"></span>
+    <span class="seg v b"></span>
+    <span class="seg v c"></span>
+    <span class="seg h d"></span>
+    <span class="seg v e"></span>
+    <span class="seg v f"></span>
+    <span class="seg h g"></span>
   </div>
+
+  <!-- 小时 ones -->
+  <div class="digit" data-num>
+    <span class="seg h a"></span>
+    <span class="seg v b"></span>
+    <span class="seg v c"></span>
+    <span class="seg h d"></span>
+    <span class="seg v e"></span>
+    <span class="seg v f"></span>
+    <span class="seg h g"></span>
+  </div>
+
+  <!-- 冒号（单独元素） -->
+  <div class="colon">:</div>
+
+  <!-- 分钟 tens -->
+  <div class="digit" data-num>
+    <span class="seg h a"></span>
+    <span class="seg v b"></span>
+    <span class="seg v c"></span>
+    <span class="seg h d"></span>
+    <span class="seg v e"></span>
+    <span class="seg v f"></span>
+    <span class="seg h g"></span>
+  </div>
+
+  <!-- 分钟 ones -->
+  <div class="digit" data-num>
+    <span class="seg h a"></span>
+    <span class="seg v b"></span>
+    <span class="seg v c"></span>
+    <span class="seg h d"></span>
+    <span class="seg v e"></span>
+    <span class="seg v f"></span>
+    <span class="seg h g"></span>
+  </div>
+
+</div>
+
 
   <div class="hint">TAP TO ENTER</div>
 </div>
@@ -221,37 +271,48 @@
      电子钟逻辑
      =============================== */
 
-  const digitMap = {
-    0: ['a','b','c','d','e','f'],
-    1: ['b','c'],
-    2: ['a','b','g','e','d'],
-    3: ['a','b','g','c','d'],
-    4: ['f','g','b','c'],
-    5: ['a','f','g','c','d'],
-    6: ['a','f','e','d','c','g'],
-    7: ['a','b','c'],
-    8: ['a','b','c','d','e','f','g'],
-    9: ['a','b','c','d','f','g']
-  };
+const digitMap = {
+  0: ['a','b','c','d','e','f'],
+  1: ['b','c'],
+  2: ['a','b','g','e','d'],
+  3: ['a','b','g','c','d'],
+  4: ['f','g','b','c'],
+  5: ['a','f','g','c','d'],
+  6: ['a','f','e','d','c','g'],
+  7: ['a','b','c'],
+  8: ['a','b','c','d','e','f','g'],
+  9: ['a','b','c','d','f','g']
+};
 
-  function renderDigit(el, num) {
-    const segs = el.querySelectorAll('.seg');
-    segs.forEach(s => s.classList.remove('on'));
-    digitMap[num].forEach(cls => {
-      el.querySelector('.' + cls).classList.add('on');
-    });
-  }
+function renderDigit(el, num) {
+  const segs = el.querySelectorAll('.seg');
+  segs.forEach(s => s.classList.remove('on'));
+  digitMap[num].forEach(cls => {
+    el.querySelector('.' + cls).classList.add('on');
+  });
+}
 
-  function updateClock() {
-    const now = new Date();
-    const h = now.getHours().toString().padStart(2,'0');
-    const m = now.getMinutes().toString().padStart(2,'0');
-    const nums = document.querySelectorAll('[data-num]');
-    renderDigit(nums[0], h[0]);
-    renderDigit(nums[1], h[1]);
-  }
+function updateClock() {
+  const now = new Date();
 
-  updateClock();
+  // 拆成 4 位字符串
+  const h = now.getHours().toString().padStart(2, '0'); // "08" / "10"
+  const m = now.getMinutes().toString().padStart(2, '0'); // "38" / "29"
+
+  const digits = document.querySelectorAll('.digit[data-num]');
+
+  // 小时
+  renderDigit(digits[0], h[0]);
+  renderDigit(digits[1], h[1]);
+
+  // 分钟
+  renderDigit(digits[2], m[0]);
+  renderDigit(digits[3], m[1]);
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
 
   /* ===============================
      页面交互逻辑
