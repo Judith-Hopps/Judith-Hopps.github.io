@@ -97,7 +97,7 @@
     .video-frame {
       position: absolute;
       inset: 0;
-      
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -113,20 +113,23 @@
     /* clock 现在相对于 video-frame */
     .clock {
       position: absolute;
-      z-index: 3;
+      
 
       /* 现在这些百分比 = 视频画面内 */
       top: 45%;
       left: 62%;
-
-      display: flex;  /* 解决手机端竖排 ，必须横向*/
-      align-items: center;
-      gap: 6px;
+      z-index: 3;
 
       transform:
         perspective(600px)
         rotateY(-18deg)
         rotateX(8deg);
+    }
+
+    .clock-row{
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     /* ===============================
@@ -218,56 +221,56 @@
     <!-- ===============================
         电子钟（覆盖在视频上）
        =============================== -->
-    <div class="clock" id="clock">
+    <div class="clock">
+      <div class="clock-row">
+        <!-- 小时 tens -->
+        <div class="digit" data-num>
+          <span class="seg h a"></span>
+          <span class="seg v b"></span>
+          <span class="seg v c"></span>
+          <span class="seg h d"></span>
+          <span class="seg v e"></span>
+          <span class="seg v f"></span>
+          <span class="seg h g"></span>
+        </div>
 
-      <!-- 小时 tens -->
-      <div class="digit" data-num>
-        <span class="seg h a"></span>
-        <span class="seg v b"></span>
-        <span class="seg v c"></span>
-        <span class="seg h d"></span>
-        <span class="seg v e"></span>
-        <span class="seg v f"></span>
-        <span class="seg h g"></span>
-      </div>
+        <!-- 小时 ones -->
+        <div class="digit" data-num>
+          <span class="seg h a"></span>
+          <span class="seg v b"></span>
+          <span class="seg v c"></span>
+          <span class="seg h d"></span>
+          <span class="seg v e"></span>
+          <span class="seg v f"></span>
+          <span class="seg h g"></span>
+        </div>
 
-    <!-- 小时 ones -->
-    <div class="digit" data-num>
-      <span class="seg h a"></span>
-      <span class="seg v b"></span>
-      <span class="seg v c"></span>
-      <span class="seg h d"></span>
-      <span class="seg v e"></span>
-      <span class="seg v f"></span>
-      <span class="seg h g"></span>
+        <!-- 冒号（单独元素） -->
+        <div class="colon">:</div>
+
+        <!-- 分钟 tens -->
+        <div class="digit" data-num>
+          <span class="seg h a"></span>
+          <span class="seg v b"></span>
+          <span class="seg v c"></span>
+          <span class="seg h d"></span>
+          <span class="seg v e"></span>
+          <span class="seg v f"></span>
+          <span class="seg h g"></span>
+        </div>
+
+        <!-- 分钟 ones -->
+        <div class="digit" data-num>
+          <span class="seg h a"></span>
+          <span class="seg v b"></span>
+          <span class="seg v c"></span>
+          <span class="seg h d"></span>
+          <span class="seg v e"></span>
+          <span class="seg v f"></span>
+          <span class="seg h g"></span>
+        </div>
+     </div>
     </div>
-
-    <!-- 冒号（单独元素） -->
-    <div class="colon">:</div>
-
-    <!-- 分钟 tens -->
-    <div class="digit" data-num>
-      <span class="seg h a"></span>
-      <span class="seg v b"></span>
-      <span class="seg v c"></span>
-      <span class="seg h d"></span>
-      <span class="seg v e"></span>
-      <span class="seg v f"></span>
-      <span class="seg h g"></span>
-    </div>
-
-    <!-- 分钟 ones -->
-    <div class="digit" data-num>
-      <span class="seg h a"></span>
-      <span class="seg v b"></span>
-      <span class="seg v c"></span>
-      <span class="seg h d"></span>
-      <span class="seg v e"></span>
-      <span class="seg v f"></span>
-      <span class="seg h g"></span>
-    </div>
-
-  </div>
 
 
   <div class="hint">TAP TO ENTER</div>
