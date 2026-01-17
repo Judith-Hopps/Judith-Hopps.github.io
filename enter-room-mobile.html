@@ -14,14 +14,16 @@
 
   <style>
     /* ===============================
-       1️⃣ 全局重置
-       =============================== */
+        全局重置
+       ===============================*/
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    /* ===============================
+        页面 & Hero 容器（整个场景）
+       ===============================*/
     html, body {
       width: 100%;
       height: 100%;
@@ -30,9 +32,6 @@
       font-family: system-ui, sans-serif;
     }
 
-    /* ===============================
-       2️⃣ Hero 容器（整个场景）
-       =============================== */
     .hero-container {
       position: relative;   /* ⚠️ 核心：所有覆盖物相对它定位 */
       width: 100vw;
@@ -41,7 +40,7 @@
     }
 
     /* ===============================
-       3️⃣ 背景模糊视频
+       背景模糊视频
        作用：
        - 延展画面
        - 防止主视频 contain 留黑边
@@ -56,9 +55,7 @@
       z-index: 1;
     }
 
-    /* ===============================
-       4️⃣ 前景主视频（完整显示）
-       =============================== */
+    /* 前景主视频（完整显示） */
     .main-video {
       position: absolute;
       width: 100%;
@@ -68,7 +65,7 @@
     }
 
     /* ===============================
-       5️⃣ Tap to enter 提示
+       Tap to enter 提示
        =============================== */
     .hint {
       position: absolute;
@@ -100,12 +97,14 @@
     .video-frame {
       position: absolute;
       inset: 0;
+      
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 2;
     }
-    /* 真正的视频“可视区域” */
-    .video-frame video {
+    /* video-frame 内的视频 */
+    .video-frame .main-video {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -114,10 +113,15 @@
     /* clock 现在相对于 video-frame */
     .clock {
       position: absolute;
+      z-index: 3;
 
       /* 现在这些百分比 = 视频画面内 */
       top: 45%;
       left: 62%;
+
+      display: flex;  /* 解决手机端竖排 ，必须横向*/
+      align-items: center;
+      gap: 6px;
 
       transform:
         perspective(600px)
@@ -204,65 +208,66 @@
          src="media/room-door.mp4"
          autoplay muted playsinline></video>
 
-  <!-- 前景主视频 -->
-  <video class="main-video"
-         src="media/room-door.mp4"
-         autoplay muted playsinline
-         id="enterVideo"></video>
+  <div class="video-frame">
+    <!-- 前景主视频 -->
+    <video class="main-video"
+          src="media/room-door.mp4"
+          autoplay muted playsinline
+          id="enterVideo"></video>
 
-  <!-- ===============================
-       电子钟（覆盖在视频上）
+    <!-- ===============================
+        电子钟（覆盖在视频上）
        =============================== -->
-<div class="clock" id="clock">
+    <div class="clock" id="clock">
 
-  <!-- 小时 tens -->
-  <div class="digit" data-num>
-    <span class="seg h a"></span>
-    <span class="seg v b"></span>
-    <span class="seg v c"></span>
-    <span class="seg h d"></span>
-    <span class="seg v e"></span>
-    <span class="seg v f"></span>
-    <span class="seg h g"></span>
+      <!-- 小时 tens -->
+      <div class="digit" data-num>
+        <span class="seg h a"></span>
+        <span class="seg v b"></span>
+        <span class="seg v c"></span>
+        <span class="seg h d"></span>
+        <span class="seg v e"></span>
+        <span class="seg v f"></span>
+        <span class="seg h g"></span>
+      </div>
+
+    <!-- 小时 ones -->
+    <div class="digit" data-num>
+      <span class="seg h a"></span>
+      <span class="seg v b"></span>
+      <span class="seg v c"></span>
+      <span class="seg h d"></span>
+      <span class="seg v e"></span>
+      <span class="seg v f"></span>
+      <span class="seg h g"></span>
+    </div>
+
+    <!-- 冒号（单独元素） -->
+    <div class="colon">:</div>
+
+    <!-- 分钟 tens -->
+    <div class="digit" data-num>
+      <span class="seg h a"></span>
+      <span class="seg v b"></span>
+      <span class="seg v c"></span>
+      <span class="seg h d"></span>
+      <span class="seg v e"></span>
+      <span class="seg v f"></span>
+      <span class="seg h g"></span>
+    </div>
+
+    <!-- 分钟 ones -->
+    <div class="digit" data-num>
+      <span class="seg h a"></span>
+      <span class="seg v b"></span>
+      <span class="seg v c"></span>
+      <span class="seg h d"></span>
+      <span class="seg v e"></span>
+      <span class="seg v f"></span>
+      <span class="seg h g"></span>
+    </div>
+
   </div>
-
-  <!-- 小时 ones -->
-  <div class="digit" data-num>
-    <span class="seg h a"></span>
-    <span class="seg v b"></span>
-    <span class="seg v c"></span>
-    <span class="seg h d"></span>
-    <span class="seg v e"></span>
-    <span class="seg v f"></span>
-    <span class="seg h g"></span>
-  </div>
-
-  <!-- 冒号（单独元素） -->
-  <div class="colon">:</div>
-
-  <!-- 分钟 tens -->
-  <div class="digit" data-num>
-    <span class="seg h a"></span>
-    <span class="seg v b"></span>
-    <span class="seg v c"></span>
-    <span class="seg h d"></span>
-    <span class="seg v e"></span>
-    <span class="seg v f"></span>
-    <span class="seg h g"></span>
-  </div>
-
-  <!-- 分钟 ones -->
-  <div class="digit" data-num>
-    <span class="seg h a"></span>
-    <span class="seg v b"></span>
-    <span class="seg v c"></span>
-    <span class="seg h d"></span>
-    <span class="seg v e"></span>
-    <span class="seg v f"></span>
-    <span class="seg h g"></span>
-  </div>
-
-</div>
 
 
   <div class="hint">TAP TO ENTER</div>
