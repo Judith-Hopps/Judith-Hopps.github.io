@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Judy 的出租屋</title>
+
+  <!-- Markdown 渲染库 -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- 博客样式 -->
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+
+<body>
+  <main id="content">
+    <p>正在加载...</p>
+  </main>
+
+  <script>
+    fetch('judy-room.md')
+      .then(res => res.text())
+      .then(md => {
+        document.getElementById('content').innerHTML = marked.parse(md);
+      });
+  </script>
+</body>
+</html>

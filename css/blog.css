@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  background: #0e1621;
+  color: #e6edf3;
+  font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+main {
+  max-width: 720px;
+  margin: 60px auto;
+  padding: 40px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 16px;
+  line-height: 1.8;
+}
+
+h1, h2, h3 {
+  color: #ffd166;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+blockquote {
+  border-left: 4px solid #ffd166;
+  padding-left: 16px;
+  color: #ccc;
+  opacity: 0.9;
+}
