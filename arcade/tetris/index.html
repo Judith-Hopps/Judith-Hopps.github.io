@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tetris - Classic Arcade</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: system-ui;
+    }
+    canvas {
+      background: #020617;
+      border: 4px solid #334155;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="game" width="200" height="400"></canvas>
+
+<script>
+/* ===== 基础设置 ===== */
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+const COLS = 10;
+const ROWS = 20;
+const BLOCK = 20;
+
+/* 游戏地图（20 行 × 10 列） */
+let board = Array.from({ length: ROWS }, () =>
+  Array(COLS).fill(0)
+);
+
+/* 当前方块（只用最简单的“田”字） */
+let piece = {
+  x: 4,
+  y: 0,
+  shape: [
+    [1, 1],
+    [1, 1]
+  ]
+};
+
+/* ===== 绘制 ===== */
+function drawBlock(x, y) {
+  ctx.fillStyle = "#38bdf8";
+  ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
+  ctx.strokeStyle = "#0ea5e9";
+  ctx.strokeRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
+}
+
+function drawBoard() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let y = 0; y < ROWS; y++) {
+    for (let x = 0; x < COLS; x++) {
+      if (board[y][x]) drawBlock(x, y);
+    }
+  }
+}
+
+function drawPiece() {
+  piece.shape.forEach((row, dy) => {
+    row.forEach((value, dx) => {
+      if (value) {
+        drawBlock(piece.x + dx, piece.y + dy);
+      }
+    });
+  });
+}
+
+/* ===== 碰撞检测 ===== */
+function collide(px, py) {
+  return piece.shape.some((row, dy) =>
+    row.some((value, dx) => {
+      if (!value) return false;
+      let x = px + dx;
+      let y = py + dy;
+      return (
+        x < 0 ||
+        x >= COLS ||
+        y >= ROWS ||
+        board[y]?.[x]
+      );
+    })
+  );
+}
+
+/* ===== 合并方块 ===== */
+function merge() {
+  piece.shape.forEach((row, dy) => {
+    row.forEach((value, dx) => {
+      if (value) {
+        board[piece.y + dy][piece.x + dx] = 1;
+      }
+    });
+  });
+}
+
+/* ===== 消行 ===== */
+function clearLines() {
+  board = board.filter(row => row.some(cell => !cell));
+  while (board.length < ROWS) {
+    board.unshift(Array(COLS).fill(0));
+  }
+}
+
+/* ===== 游戏循环 ===== */
+function drop() {
+  if (!collide(piece.x, piece.y + 1)) {
+    piece.y++;
+  } else {
+    merge();
+    clearLines();
+    piece.y = 0;
+    piece.x = 4;
+  }
+}
+
+/* ===== 键盘控制 ===== */
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft" && !collide(piece.x - 1, piece.y)) {
+    piece.x--;
+  }
+  if (e.key === "ArrowRight" && !collide(piece.x + 1, piece.y)) {
+    piece.x++;
+  }
+  if (e.key === "ArrowDown") {
+    drop();
+  }
+});
+
+/* ===== 主循环 ===== */
+function loop() {
+  drawBoard();
+  drawPiece();
+  drop();
+  setTimeout(loop, 500);
+}
+
+loop();
+</script>
+
+</body>
+</html>
