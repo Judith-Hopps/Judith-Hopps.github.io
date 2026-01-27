@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blog/Obsidian上传图片问题.md",
+                "file": "blog/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Obsidian上传图片问题"
+              "title": "将 Obsidian 的整个文档上传到 GitHub 仓库"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blog/Obsidian上传图片问题.md",
+                "file": "blog/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Obsidian上传图片问题 的反向链接列表"
+              "title": "将 Obsidian 的整个文档上传到 GitHub 仓库 的反向链接列表"
             }
           },
           {
@@ -183,8 +183,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "618200b65c7a5454",
+  "active": "82a1a169390928cd",
   "lastOpenFiles": [
+    "blog/Obsidian上传图片问题.md",
     "blog/assets/Pasted image 20260126165828.png",
     "blog/assets/Pasted image 20260126165219.png",
     "blog/assets/Pasted image 20260126164931.png",
@@ -195,7 +196,6 @@
     "test.md",
     "blog/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
     "css/blog.css",
-    "blog/post.html",
-    "blog/Obsidian上传图片问题.md"
+    "blog/post.html"
   ]
 }
