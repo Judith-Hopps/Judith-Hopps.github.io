@@ -1,0 +1,67 @@
+/* -------- 通用样式 -------- */
+body {
+    font-family: "Noto Sans", "PingFang SC", sans-serif; /* 指定页面默认字体 */
+    line-height: 1.8; /* 行距加大 */
+    
+    /* 去掉浏览器默认间距 */
+    margin: 0;  
+    padding: 0;
+}
+
+/* Light 模式：随笔essay，笔记note，项目project */
+body.light.essay {
+    background-color: #fff8f0;  /* 暖米色 */
+    color: #333;
+}
+body.light.note {
+    background-color: #f9f9f9;  /* 浅灰纸张感 */
+    color: #222;
+}
+body.light.project {
+    background-color: #ffffff;  /* 工程感白纸 */
+    color: #111;
+}
+
+/* Dark 模式：夜间模式全局背景深色，文字亮色*/
+body.dark.essay { 
+    background-color: #2b243c; 
+    color: #f5e0c3;
+}
+body.dark.note { 
+    background-color: #2e2e3a; 
+    color: #f0f0f0; 
+}
+body.dark.project { 
+    background-color: #1a1a1a; 
+    color: #ccc; 
+}
+
+
+/* 节日模式 */
+body.holiday {
+    background-color: #fff0f0;
+    color: #333;
+}
+
+/* 标题、文章、代码、图片样式 */
+/* 标题大 */
+.post-title { font-size: 2rem; margin: 1rem 0; }
+/* 元信息（作者/页脚）小 */
+.post-meta { font-size: 0.9rem; color: #888; margin-bottom: 1rem; }
+
+/* 段落样式：p的margin 段落间距舒适 */
+.blog-content p { margin: 1rem 0; }
+/* 代码块样式 */
+.blog-content pre {
+    /* 深色背景 + 亮色文字 */
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1rem;
+    /* 避免长代码溢出 */
+    overflow-x: auto;  
+}
+/* 图片样式  */
+.blog-content img { max-width: 100%; display: block; margin: 1rem auto; }
+
+/* 页脚 */
+footer { text-align: center; padding: 1rem; font-size: 0.8rem; color: #666; }
