@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "test.md",
+                "file": "blog/Obsidian上传图片问题.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "test"
+              "title": "Obsidian上传图片问题"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "test.md",
+                "file": "blog/Obsidian上传图片问题.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "test 的反向链接列表"
+              "title": "Obsidian上传图片问题 的反向链接列表"
             }
           },
           {
@@ -185,9 +185,10 @@
   },
   "active": "82a1a169390928cd",
   "lastOpenFiles": [
+    "test.md",
+    "blog/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
     "css/blog.css",
     "blog/post.html",
-    "blog/Obsidian上传图片问题.md",
-    "test.md"
+    "blog/Obsidian上传图片问题.md"
   ]
 }
