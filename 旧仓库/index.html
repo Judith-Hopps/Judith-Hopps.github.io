@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Zootopia · Tech Street</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #b8d8e6 0%, #eef3f6 60%);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2.5rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    header p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: #555;
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    /* 街道容器 */
+    .street {
+      max-width: 1200px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    /* 店铺 */
+    .shop {
+      background: linear-gradient(180deg, #ffffff, #f7f7f7);
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem 2rem;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .shop:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.16);
+    }
+
+    /* 招牌 */
+    .sign {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .desc {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* 名句（暗戳戳） */
+    .quote {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.2rem;
+      font-size: 0.85rem;
+      color: #888;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.4s ease;
+      font-style: italic;
+    }
+
+    .shop:hover .quote {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 不同店铺的细微区分 */
+    .home { border-top: 5px solid #ffb703; }
+    .arcade { border-top: 5px solid #ff6f61; }
+    .lab { border-top: 5px solid #4dabf7; }
+    .archive { border-top: 5px solid #8bc34a; }
+    .square { border-top: 5px solid #9c27b0; }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🦊 Zootopia · Tech Street</h1>
+  <p>
+    这不是一座普通的城市。<br>
+    这里记录代码、实验、失败、好奇心，<br>
+    以及一个开发者在疯狂动物城里的私人街区。
+  </p>
+</header>
+
+<section class="street">
+
+  <a class="shop home" href="room.html">
+    <div class="sign">🏠 Grand Pangolin Arms</div>
+    <div class="desc">
+      穿山甲公寓<br>
+      技术博客 · 日常记录 · 想法与世界
+    </div>
+    <div class="quote">“luxury apartments with charm”</div>
+  </a>
+
+  <a class="shop arcade" href="arcade/">
+    <div class="sign">🎮 Adventure Arcade</div>
+    <div class="desc">
+      小游戏 · 实验性项目 · 有点危险的乐趣<br>
+      有些东西，只有试了才知道会发生什么。
+    </div>
+    <div class="quote">“You know you love me.”</div>
+  </a>
+
+  <a class="shop lab" href="lab/">
+    <div class="sign">🧠 Underground Lab</div>
+    <div class="desc">
+      操作系统 · 底层实验 · 系统与秩序<br>
+      城市下面，藏着真正决定一切的东西。
+    </div>
+    <div class="quote">“Fear always works.”</div>
+  </a>
+
+  <a class="shop archive" href="archive/">
+    <div class="sign">🏛 City Archive</div>
+    <div class="desc">
+      电影 · 名著 · 歌剧 · 名句收藏<br>
+      有些话，会在多年后突然理解。
+    </div>
+    <div class="quote">“Anyone can be anything.”</div>
+  </a>
+
+  <a class="shop square" href="guestbook/">
+    <div class="sign">💬 City Square</div>
+    <div class="desc">
+      留言板 · 城市广场<br>
+      路过的人，偶尔也会留下些什么。
+    </div>
+    <div class="quote">“It’s called a hustle, sweetheart.”</div>
+  </a>
+
+</section>
+
+<footer>
+  © Judith Hopps · Zootopia Tech Street
+</footer>
+
+</body>
+</html>

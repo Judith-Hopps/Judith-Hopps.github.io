@@ -1,0 +1,28 @@
+/
+├─ index.html          ← 世界首页入口，你自己手写 HTML/CSS
+├─ css/                ← 全局 CSS（首页、博客共用）
+│   └─ world.css
+├─ images/             ← 全局图片（首页背景、图标、世界元素）
+├─ games/              ← 游戏区
+│   └─ tetris/
+│       ├─ index.html
+│       └─ tetris.js
+├─ lab/                ← 实验室 / 项目区
+├─ archive/            ← 电影/名言/歌剧区
+└─ blog/               ← 博客区（Hugo 渲染）
+    ├─ content/        ← 所有 Markdown 内容
+    │   └─ post/
+    │       ├─ essay-001.md
+    │       ├─ note-001.md
+    │       └─ project-001.md
+    ├─ layouts/        ← Hugo 渲染模板（HTML）
+    │   ├─ _default/
+    │   │   └─ single.html   ← 默认文章模板
+    │   └─ partials/
+    │       ├─ header.html
+    │       └─ footer.html
+    └─ static/
+        └─ css/
+            ├─ blog.css       ← 全部文章通用的 CSS
+            ├─ blog-dark.css  ← 夜间模式
+            └─ blog-holiday.css ← 节日特别版
