@@ -2,4 +2,8 @@
 title: Note
 ---
 
-{{< list-pages >}}
+## Notes
+
+{{ range .Pages }}
+- [{{ .Title }}]({{ .RelPermalink }})
+{{ end }}
