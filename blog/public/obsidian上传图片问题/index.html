@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="#小白白
+1.为什么 Obsidian 复制图片后总会在根目录多出一份？
+在使用Obsidian写Markdown文件的时候，若是在.md中直接粘贴附上图片，会自动在主目录跟着出现图片源。
+![[assets/Pasted image 20260122212015.png]]
+导致的问题:
+在其他不同文件夹下写.md 时粘贴的图片全部都会默认放在根目录下，导致特别乱。
+原因：
+Obsidian 对图片的处理逻辑是:
+
+图片=附件
+即它会把所有”粘贴的图片放到一个统一的附件目录
+
+而我们当前的设置是：
+
+附件文件夹=Vault根目录（主文件夹）
+
+所以会出现这种问题。
+解决方法
+![[assets/Pasted image 20260122222043.png]]
+现在，Obsidian 就会自动将刚刚粘贴的图片放入.md所在文件夹下的子文件夹assets了，如下：
+![[assets/Pasted image 20260122223503.png]]
+新的问题：
+不过还有个问题：我们一般会在同一个文件夹下写入多个文档，这样不同文档引用的图片全部都会放在同一个assets中。[暂时先以一个文档index.md&#43;一个文件夹assets（用于存放引用的图片）的方式解决]
+2. 在上传GitHub Pages 时，图片为什么没能一起上传？
+在将所写的文档直接上传至GitHub Pages 时，网页无法却显示图片。
+原因：
+Obsidian在文档中以![[img1.png]] 的形式引用图片，而标准Markdown是以![](./assets/img1.png) 的形式引用引用图片，所以无法在网页中正确显示。（Obsidian引用如下图：）
+![[assets/Pasted image 20260124105910.png]]
+解决方法
+
+">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/obsidian%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/obsidian%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><p>#小白白</p>
+<h1 id="1为什么-obsidian-复制图片后总会在根目录多出一份">1.为什么 Obsidian 复制图片后总会在根目录多出一份？<a hidden class="anchor" aria-hidden="true" href="#1为什么-obsidian-复制图片后总会在根目录多出一份">#</a></h1>
+<p>在使用Obsidian写Markdown文件的时候，若是在.md中直接粘贴附上图片，会自动在主目录跟着出现图片源。
+![[assets/Pasted image 20260122212015.png]]</p>
+<p><strong>导致的问题:</strong>
+在其他不同文件夹下写.md 时粘贴的图片全部都会默认放在根目录下，导致特别乱。</p>
+<p><strong>原因：</strong>
+Obsidian 对图片的处理逻辑是:</p>
+<blockquote>
+<p><strong>图片=附件</strong>
+即它会把所有”粘贴的图片放到一个<strong>统一的附件目录</strong></p>
+</blockquote>
+<p>而我们当前的设置是：</p>
+<blockquote>
+<p><strong>附件文件夹=Vault根目录（主文件夹）</strong></p>
+</blockquote>
+<p>所以会出现这种问题。</p>
+<h2 id="解决方法">解决方法<a hidden class="anchor" aria-hidden="true" href="#解决方法">#</a></h2>
+<p>![[assets/Pasted image 20260122222043.png]]</p>
+<p>现在，Obsidian 就会自动将刚刚粘贴的图片放入.md所在文件夹下的子文件夹assets了，如下：
+![[assets/Pasted image 20260122223503.png]]</p>
+<p><strong>新的问题：</strong>
+不过还有个问题：我们一般会在同一个文件夹下写入多个文档，这样不同文档引用的图片全部都会放在同一个assets中。[暂时先以一个文档index.md+一个文件夹assets（用于存放引用的图片）的方式解决]</p>
+<h1 id="2-在上传github-pages-时图片为什么没能一起上传">2. 在上传GitHub Pages 时，图片为什么没能一起上传？<a hidden class="anchor" aria-hidden="true" href="#2-在上传github-pages-时图片为什么没能一起上传">#</a></h1>
+<p>在将所写的文档直接上传至GitHub Pages 时，网页无法却显示图片。</p>
+<p><strong>原因：</strong>
+Obsidian在文档中以<code>![[img1.png]]</code> 的形式引用图片，而标准Markdown是以<code>![](./assets/img1.png)</code> 的形式引用引用图片，所以无法在网页中正确显示。（Obsidian引用如下图：）
+![[assets/Pasted image 20260124105910.png]]</p>
+<h2 id="解决方法-1">解决方法<a hidden class="anchor" aria-hidden="true" href="#解决方法-1">#</a></h2>
+<p><img loading="lazy" src="assets/Pasted%20image%2020260124120930.png">
+<img loading="lazy" src="assets/Pasted%20image%2020260126102522.png"></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">My New Hugo Site</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
