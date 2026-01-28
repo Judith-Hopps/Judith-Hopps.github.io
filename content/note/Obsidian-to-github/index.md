@@ -7,7 +7,7 @@ categories:
 tags:
   - Obsidian
   - Markdown
-  - 小白
+  - 小白白
   - Github
 ---
 
