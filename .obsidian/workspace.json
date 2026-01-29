@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blog/content/note/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
+                "file": "blog/content/note/_index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "将 Obsidian 的整个文档上传到 GitHub 仓库"
+              "title": "_index"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blog/content/note/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
+                "file": "blog/content/note/_index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "将 Obsidian 的整个文档上传到 GitHub 仓库 的反向链接列表"
+              "title": "_index 的反向链接列表"
             }
           },
           {
@@ -183,34 +183,42 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "82a1a169390928cd",
+  "active": "618200b65c7a5454",
   "lastOpenFiles": [
+    "blog/assets/css/custom.css",
+    "blog/assets/css",
+    "blog/assets",
+    "blog/static - 副本/css/custom.css",
+    "blog/static - 副本/css",
+    "blog/static - 副本",
+    "blog/public/css/custom.css",
+    "blog/public/css",
+    "blog/static/css/custom.css",
+    "blog/static/css",
+    "blog/themes/PaperMod/images/tn.png",
+    "blog/themes/PaperMod/images/screenshot.png",
+    "blog/themes/PaperMod/images",
+    "blog/public/note/Pasted image 20260128212009.png",
+    "blog/content/note/Pasted image 20260128212009.png",
+    "blog/content/note/_index.md",
+    "blog/content/note/index.md",
+    "blog/content/study/index.md",
+    "blog/content/note/Obsidian-to-github/index.md",
+    "blog/public/note/obsidian-to-github/Pasted image 20260126165828.png",
+    "blog/public/note/obsidian-to-github/Pasted image 20260126164931.png",
+    "blog/public/note/obsidian-to-github/Pasted image 20260126165219.png",
+    "blog/public/note/obsidian-to-github/Pasted image 20260126164750.png",
+    "blog/public/note/obsidian-to-github/Pasted image 20260126164734.png",
+    "blog/public/note/obsidian-to-github/Pasted image 20260126164547.png",
+    "blog/旧仓库/blog/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
+    "blog/旧仓库/blog/Obsidian上传图片问题.md",
+    "blog/旧仓库/test.md",
+    "blog/themes/PaperMod/README.md",
+    "blog/content/note/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
     "旧仓库/blog/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
     "blog/content/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
-    "blog/public/note/page/1/index.html",
-    "blog/public/note/将-obsidian-的整个文档上传到-github-仓库/index.html",
-    "blog/public/note/page/1",
-    "blog/public/note/将-obsidian-的整个文档上传到-github-仓库",
-    "blog/public/note/page",
-    "blog/public/note/index.xml",
-    "blog/public/note/index.html",
-    "blog/public/note",
-    "blog/content/note/将 Obsidian 的整个文档上传到 GitHub 仓库.md",
-    "blog/content/note/assets/Pasted image 20260126164931.png",
-    "blog/content/note/assets/Pasted image 20260126165219.png",
-    "blog/content/note/assets/Pasted image 20260126165828.png",
-    "blog/content/note/assets/Pasted image 20260126164750.png",
-    "blog/content/note/assets/Pasted image 20260126164734.png",
-    "blog/content/note/assets/Pasted image 20260126164638.png",
-    "blog/content/note/assets/Pasted image 20260126164547.png",
-    "blog/content/note/assets/Pasted image 20260126102522.png",
-    "blog/content/note/assets/Pasted image 20260122223503.png",
-    "blog/content/note/assets/Pasted image 20260124120930.png",
-    "blog/content/note/assets",
-    "blog/content/note",
     "旧仓库/blog/Obsidian上传图片问题.md",
     "blog/content/Obsidian上传图片问题.md",
-    "blog/themes/PaperMod/README.md",
     "themes/PaperMod/README.md",
     "blog/archetypes/default.md",
     "blog/myworld/archetypes/default.md",

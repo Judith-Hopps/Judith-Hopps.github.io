@@ -25,12 +25,12 @@ tags:
 
 ## 4.Obsidian Git插件安装
 - 关闭安全模式
-![](assets/Pasted%20image%2020260126164547.png)
+![](Pasted%20image%2020260126164547.png)
 - 进入社区插件市场
-![](assets/Pasted%20image%2020260126164638.png)
+![](Pasted%20image%2020260126164638.png)
 - 搜索“git"插件进行安装-启用
-![](assets/Pasted%20image%2020260126164734.png)
-![](assets/Pasted%20image%2020260126164750.png)
+![](Pasted%20image%2020260126164734.png)
+![](Pasted%20image%2020260126164750.png)
 
 
 # 二、上传Github仓库
@@ -43,7 +43,7 @@ tags:
 
 ## 2.操作步骤
 - 创建一个测试文档用于上传。
-![](assets/Pasted%20image%2020260126164931.png)
+![](Pasted%20image%2020260126164931.png)
 - 按下Ctrl+P，打开命令面板
 先选择Commit，等到其Commit了文档之后，然后再选择Push至Github服务器。
-![](assets/Pasted%20image%2020260126165828.png)
+![](Pasted%20image%2020260126165828.png)

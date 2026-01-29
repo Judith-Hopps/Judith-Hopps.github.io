@@ -26,32 +26,3 @@
             ├─ blog.css       ← 全部文章通用的 CSS
             ├─ blog-dark.css  ← 夜间模式
             └─ blog-holiday.css ← 节日特别版
-
-
-
-content/
-├── note/        # 学术 / 学科 / 系统性笔记
-│   ├── cn/      # 计算机网络
-│   │   ├── tcp-ip-01.md
-│   │   ├── tcp-ip-02.md
-│   │   └── _index.md
-│   ├── ml/      # 机器学习
-│   └── security/
-│
-├── project/     # 工程 / 实践 / 可复现
-│   ├── blog/
-│   │   ├── hugo-init.md
-│   │   ├── obsidian-to-hugo.md
-│   │   └── _index.md
-│   └── adversarial-training/
-│
-├── essay/       # 随笔 / 思考 / 文字世界
-│   ├── night/
-│   ├── city/
-│   └── _index.md
-│
-├── life/        # 生活记录 / vlog 文案
-│   ├── 2026/
-│   └── _index.md
-│
-└── _index.md    # 首页用
