@@ -5,3 +5,6 @@ public/
 # OS junk
 .DS_Store
 Thumbs.db
+
+
+.obsidian/
