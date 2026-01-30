@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Markdown on 🔥 THIS IS MY BLOG 🔥</title>
+    <link>https://yeti-cave.github.io/blog/tags/markdown/</link>
+    <description>Recent content in Markdown on 🔥 THIS IS MY BLOG 🔥</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 27 Jan 2026 10:00:00 +0000</lastBuildDate>
+    <atom:link href="https://yeti-cave.github.io/blog/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>将 Obsidian 的整个文档上传到 GitHub 仓库</title>
+      <link>https://yeti-cave.github.io/blog/note/obsidian-to-github/</link>
+      <pubDate>Tue, 27 Jan 2026 10:00:00 +0000</pubDate>
+      <guid>https://yeti-cave.github.io/blog/note/obsidian-to-github/</guid>
+      <description>&lt;h2 id=&#34;一环境确认&#34;&gt;一、环境确认&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;GitHub&lt;/strong&gt;：已有仓库（比如 &lt;code&gt;the-yeti&#39;s-cave.github.io&lt;/code&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Git Bash&lt;/strong&gt;：已经可以在命令行执行 &lt;code&gt;git --version&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Obsidian&lt;/strong&gt;：写 Markdown 内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Obsidian Git 插件&lt;/strong&gt;：推荐使用，让提交推送更方便&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;4obsidian-git插件安装&#34;&gt;4.Obsidian Git插件安装&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;关闭安全模式
+&lt;img loading=&#34;lazy&#34; src=&#34;https://yeti-cave.github.io/blog/note/obsidian-to-github/Pasted%20image%2020260126164547.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;进入社区插件市场
+&lt;img loading=&#34;lazy&#34; src=&#34;https://yeti-cave.github.io/blog/note/obsidian-to-github/Pasted%20image%2020260126164638.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;搜索“git&amp;quot;插件进行安装-启用
+&lt;img loading=&#34;lazy&#34; src=&#34;https://yeti-cave.github.io/blog/note/obsidian-to-github/Pasted%20image%2020260126164734.png&#34;&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://yeti-cave.github.io/blog/note/obsidian-to-github/Pasted%20image%2020260126164750.png&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;二上传github仓库&#34;&gt;二、上传Github仓库&lt;/h2&gt;
+&lt;h3 id=&#34;1原理&#34;&gt;1.原理&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;改文件状态&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Commit:&lt;/strong&gt;「把现在的状态保存一下」&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Push:&lt;/strong&gt;「把保存的东西发到 GitHub」&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub Pages 更新:&lt;/strong&gt;  「服务器看到新内容，重新部署」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2操作步骤&#34;&gt;2.操作步骤&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;创建一个测试文档用于上传。
+&lt;img loading=&#34;lazy&#34; src=&#34;https://yeti-cave.github.io/blog/note/obsidian-to-github/Pasted%20image%2020260126164931.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;按下Ctrl+P，打开命令面板
+先选择Commit，等到其Commit了文档之后，然后再选择Push至Github服务器。
+&lt;img loading=&#34;lazy&#34; src=&#34;https://yeti-cave.github.io/blog/note/obsidian-to-github/Pasted%20image%2020260126165828.png&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
