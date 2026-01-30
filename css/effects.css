@@ -1,0 +1,18 @@
+.sparkle {
+  position: fixed;
+  color: #c7a46c;
+  font-size: 20px;
+  pointer-events: none;
+  animation: sparkle-fade 2s ease-out forwards;
+}
+
+@keyframes sparkle-fade {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px) scale(0.3);
+    opacity: 0;
+  }
+}
