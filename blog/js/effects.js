@@ -5,7 +5,7 @@ function isDarkMode() {
   );
 }
 
-document.addEventListener("click", (e) => {
+function createStar(clientX, clientY) {
   const star = document.createElement("span");
 
   const dark = isDarkMode();
@@ -14,10 +14,21 @@ document.addEventListener("click", (e) => {
   star.className = "sparkle";
   document.body.appendChild(star);
 
-  star.style.left = e.clientX + "px";
-  star.style.top = e.clientY + "px";
+  star.style.left = clientX + "px";
+  star.style.top = clientY + "px";
 
   setTimeout(() => star.remove(), 900);
+}
+
+// 鼠标点击事件
+document.addEventListener("click", (e) => {
+  createStar(e.clientX, e.clientY);
+});
+
+// 移动设备触摸事件
+document.addEventListener("touchend", (e) => {
+  const touch = e.changedTouches[0];
+  createStar(touch.clientX, touch.clientY);
 });
 
 
